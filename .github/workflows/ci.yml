@@ -1,6 +1,6 @@
 name: ci
 
-# 参考 dsh-context-guard 的 ci.yml（test job + 守卫闸），按本仓库（Node 看板 + Python 广播）改写：
+# 参考常见的 CI 最佳实践（test job + 守卫闸），按本仓库（Node 看板 + Python 广播）改写：
 #   · 保留：CONCURRENCY、contents: read、fail-fast: false 的版本矩阵、
 #     「检查后工作树必须干净」「不许把备份/产物带进仓库」两道小闸。
 #   · 去掉：npm publish job（本仓库不是 npm 包，private: true）。
@@ -137,7 +137,7 @@ jobs:
         run: test -z "$(git status --porcelain)"
 
   # ── 发布：只在推 v* tag 时创建 GitHub Release；不发布到 npm ──────────────
-  # 与 dsh-context-guard 的差别：那边是 npm Trusted Publishing，这边是仓库里的
+  # 与纯 npm 包仓库的差别：那边需要 Trusted Publishing，这边是仓库里的
   # Node 脚本 + Python 脚本，没有可发布的包，所以产物 = GitHub Release 本身。
   release:
     if: startsWith(github.ref, 'refs/tags/v')

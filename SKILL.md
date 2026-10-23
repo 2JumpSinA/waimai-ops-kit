@@ -132,7 +132,7 @@ npm run build
 | 任务名 | 时间 | 干什么 |
 |---|---|---|
 | `WaimaiDashboardRefresh` | 每天 08:30 | 采集数据 + 生成看板 |
-| `BalanceAlert_Daily` | 每天 09:00 | 推送播报 |
+| `WaimaiDailyBroadcast` | 每天 09:00 | 推送播报 |
 
 注册失败（权限不足）时的退路：用「启动文件夹」放快捷方式，或让用户用管理员身份重跑。
 

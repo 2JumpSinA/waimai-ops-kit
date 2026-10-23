@@ -61,7 +61,7 @@ class CredStore:
         # cookie_source: "profile" = 浏览器 profile 是正本，keyring 只是缓存；
         #                "credman" = 旧行为，完全只读凭据管理器（绝不碰 CDP）。
         # profile_ports: 驱动名 -> CDP 端口。⚠️ 映射以实测账号名为准校正：
-        # 看板侧分工是 9222 Chrome=品牌A / 9223 Edge=品牌B，BalanceAlert 的
+        # 看板侧分工是 9222 Chrome=品牌A / 9223 Edge=品牌B，播报的
         # ele_yf / meituan_yf 用 Edge（=品牌B），但最终以登录后浏览器里
         # 实际登录的账号为准。
         self.cookie_source: str = "profile"

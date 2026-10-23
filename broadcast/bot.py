@@ -65,7 +65,7 @@ def load_config() -> dict:
 
 
 def build_store(cfg: dict, log: "Logger | None" = None) -> CredStore:
-    store = CredStore(cfg.get("keyring_service", "wb-balance-alert"), ROOT / "creds")
+    store = CredStore(cfg.get("keyring_service", "waimai-ops-kit"), ROOT / "creds")
     # 统一凭据模块 ②a-1：profile 正本 → 缓存兜底。
     # cookie_source=profile（缺省）：get() 先读浏览器 profile，不可达回退缓存并 WARN；
     # cookie_source=credman：旧行为，只读凭据管理器，绝不碰 CDP。
@@ -169,7 +169,7 @@ def fetch_one(key: str, cfg: dict, store: CredStore,
     凭据失效、未配置这类确定性错误不重试，立即返回。
 
     为什么预算必须是**全局**的（deadline 由调用方传入）：采集器
-    （dsh-app/wecom-fastlane）给整条命令的总超时是 180s，超时被杀 →
+    （若配合企微快查询通道）给整条命令的总超时是 180s，超时被杀 →
     一个字节都没输出 → 快照不更新 → 群里报「数据陈旧」。2026-10-19 采集中断
     8 小时的直接原因就是这里的预算按「每个账号各 150s」算 —— 4 个账号最坏
     600s，前面账号的重试把后面账号的份额全吃了。改成 cmd_run 在循环外算一次
@@ -751,7 +751,7 @@ def cmd_check_source(cfg: dict, args) -> int:
     return 0 if ok else 2
 
 
-TASK_NAME = "BalanceAlert_Daily"
+TASK_NAME = "WaimaiDailyBroadcast"
 
 # Windows 计划任务用 XML 注册。不用 schtasks 命令行拼参数，是因为
 # /TR 的值里只要路径带空格，引号就会被 cmd 吃掉，任务会注册成一条

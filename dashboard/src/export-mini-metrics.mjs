@@ -1,5 +1,5 @@
 /**
- * 把看板 VM 里的**轻指标**导出成 `data/mini-metrics.json`，给 BalanceAlert 群播报读。
+ * 把看板 VM 里的**轻指标**导出成 `data/mini-metrics.json`，给播报模块读。
  *
  *   node src/export-mini-metrics.mjs [--data=<dir>] [--out=<file>] [--root=<dir>]
  *

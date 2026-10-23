@@ -266,7 +266,7 @@ def fetch_balance(cfg: dict, store, key: str = "meituan",
         # 先判登录态，再等页面。
         # 为什么顺序重要：凭据过期时首页会停在登录页 —— H5guard 等不到（白等
         # 20s）、「余额」也永远不会出现（再白等 45s）。而采集器给整条命令只留
-        # 180s（dsh-app/wecom-fastlane/commands.json → timeoutMs），一次白等就
+        # 180s（企微通道的 commands.json → timeoutMs），一次白等就
         # 吞掉三分之一，叠加 retry 直接超时 → 连快照都写不出来 → 群里报「数据
         # 陈旧」。过期在这里 10s 内就能定性，把预算留给真正能取数的账号。
         # 注：/acct/info 不被签名网关拦，此时还没等到 H5guard 也能问出结论。
