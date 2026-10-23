@@ -1,0 +1,6052 @@
+{
+  "generatedAt": "2026-09-22 10:00:00",
+  "projectOrder": [
+    "quanyi",
+    "yifeng"
+  ],
+  "projects": {
+    "quanyi": {
+      "key": "quanyi",
+      "label": "品牌A",
+      "fullLabel": "品牌A健康",
+      "warnings": [
+        "闪购营业统计缺失（未跑 fetch-taobao-stats.mjs）—— 平台切换器的闪购视图会是空的",
+        "闪购推广数据缺失（未跑 fetch-taobao-promo.mjs）—— 闪购视图的推广板块将如实降级"
+      ],
+      "dataTime": "2026-09-22 09:00:00",
+      "acctId": "acct-quanyi",
+      "mtStores": [
+        {
+          "id": "s1",
+          "name": "合成店一",
+          "city": "杭州",
+          "status": "营业中",
+          "restReason": ""
+        }
+      ],
+      "mtStatusDist": {
+        "营业中": 3,
+        "停业中": 1
+      },
+      "unifiedRows": [
+        {
+          "name": "合成店一",
+          "city": "杭州",
+          "kind": "planned",
+          "mtId": "p1",
+          "tbId": "t1",
+          "mtStatus": "营业中",
+          "offlineReason": "",
+          "planned": true
+        },
+        {
+          "name": "合成店二",
+          "city": "成都",
+          "kind": "normal_offline",
+          "mtId": "p2",
+          "tbId": "",
+          "mtStatus": "停业中",
+          "offlineReason": "",
+          "planned": false
+        },
+        {
+          "name": "合成店三",
+          "city": "",
+          "kind": "unplanned",
+          "mtId": "",
+          "tbId": "t3",
+          "mtStatus": "",
+          "offlineReason": "",
+          "planned": false
+        }
+      ],
+      "plan": {
+        "total": 4,
+        "kept": 3,
+        "duplicate": 1,
+        "byKind": {
+          "planned": 1,
+          "normal_offline": 1,
+          "unplanned": 1
+        },
+        "listed": 1,
+        "unplanned": 2,
+        "bothPlatforms": 1,
+        "onlyMeituan": 1,
+        "onlyEleme": 1,
+        "noId": 0
+      },
+      "anomalies": [
+        {
+          "name": "合成店二",
+          "city": "成都",
+          "platforms": [
+            {
+              "p": "美团",
+              "status": "停业中",
+              "from": "接口"
+            }
+          ],
+          "planned": false,
+          "offlineReason": ""
+        },
+        {
+          "name": "合成店三",
+          "city": "",
+          "platforms": [
+            {
+              "p": "闪购",
+              "status": "休息中",
+              "from": "台账"
+            }
+          ],
+          "planned": true,
+          "offlineReason": ""
+        }
+      ],
+      "income": {
+        "windows": {
+          "today": {
+            "label": "今日",
+            "start": "2026-09-22",
+            "end": "2026-09-21",
+            "orderCount": 12,
+            "validOrderCount": 11,
+            "cancelCount": 1,
+            "cancelRate": 8.33,
+            "projectedIncome": 120,
+            "cancelIncome": null,
+            "avgOrderValue": 10.9,
+            "source": "todayOrderSummary（官方今日实时汇总）"
+          },
+          "yesterday": {
+            "label": "昨日",
+            "start": "2026-09-21",
+            "end": "2026-09-21",
+            "orderCount": 20,
+            "validOrderCount": 19,
+            "cancelCount": 1,
+            "cancelRate": 5,
+            "projectedIncome": 200,
+            "cancelIncome": null,
+            "avgOrderValue": 10.5,
+            "source": "fixTimeChart 昨日行 + order_cancel"
+          },
+          "d7": {
+            "label": "近7天",
+            "start": "2026-09-24",
+            "end": "2026-09-30",
+            "orderCount": 123,
+            "validOrderCount": 123,
+            "cancelCount": 8,
+            "cancelRate": 6.5,
+            "projectedIncome": 984,
+            "cancelIncome": null,
+            "avgOrderValue": 8,
+            "source": "逐日汇总"
+          },
+          "d30": {
+            "label": "近30天",
+            "start": "2026-09-01",
+            "end": "2026-09-30",
+            "orderCount": 534,
+            "validOrderCount": 534,
+            "cancelCount": 30,
+            "cancelRate": 5.62,
+            "projectedIncome": 4155,
+            "cancelIncome": null,
+            "avgOrderValue": 7.78,
+            "source": "逐日汇总"
+          }
+        },
+        "daily": [
+          {
+            "date": "2026-09-01",
+            "orderCount": 10,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 100,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-02",
+            "orderCount": 13,
+            "cancelCount": 1,
+            "cancelRate": 7.69,
+            "projectedIncome": 107,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-03",
+            "orderCount": 16,
+            "cancelCount": 2,
+            "cancelRate": 12.5,
+            "projectedIncome": 114,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-04",
+            "orderCount": 19,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 121,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-05",
+            "orderCount": 22,
+            "cancelCount": 1,
+            "cancelRate": 4.55,
+            "projectedIncome": 128,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-06",
+            "orderCount": 25,
+            "cancelCount": 2,
+            "cancelRate": 8,
+            "projectedIncome": 135,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-07",
+            "orderCount": 11,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 142,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-08",
+            "orderCount": 14,
+            "cancelCount": 1,
+            "cancelRate": 7.14,
+            "projectedIncome": 149,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-09",
+            "orderCount": 17,
+            "cancelCount": 2,
+            "cancelRate": 11.76,
+            "projectedIncome": 156,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-10",
+            "orderCount": 20,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 163,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-11",
+            "orderCount": 23,
+            "cancelCount": 1,
+            "cancelRate": 4.35,
+            "projectedIncome": 170,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-12",
+            "orderCount": 26,
+            "cancelCount": 2,
+            "cancelRate": 7.69,
+            "projectedIncome": 177,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-13",
+            "orderCount": 12,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 184,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-14",
+            "orderCount": 15,
+            "cancelCount": 1,
+            "cancelRate": 6.67,
+            "projectedIncome": 101,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-15",
+            "orderCount": 18,
+            "cancelCount": 2,
+            "cancelRate": 11.11,
+            "projectedIncome": 108,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-16",
+            "orderCount": 21,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 115,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-17",
+            "orderCount": 24,
+            "cancelCount": 1,
+            "cancelRate": 4.17,
+            "projectedIncome": 122,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-18",
+            "orderCount": 10,
+            "cancelCount": 2,
+            "cancelRate": 20,
+            "projectedIncome": 129,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-19",
+            "orderCount": 13,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 136,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-20",
+            "orderCount": 16,
+            "cancelCount": 1,
+            "cancelRate": 6.25,
+            "projectedIncome": 143,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-21",
+            "orderCount": 19,
+            "cancelCount": 2,
+            "cancelRate": 10.53,
+            "projectedIncome": 150,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-22",
+            "orderCount": 22,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 157,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-23",
+            "orderCount": 25,
+            "cancelCount": 1,
+            "cancelRate": 4,
+            "projectedIncome": 164,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-24",
+            "orderCount": 11,
+            "cancelCount": 2,
+            "cancelRate": 18.18,
+            "projectedIncome": 171,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-25",
+            "orderCount": 14,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 178,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-26",
+            "orderCount": 17,
+            "cancelCount": 1,
+            "cancelRate": 5.88,
+            "projectedIncome": 185,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-27",
+            "orderCount": 20,
+            "cancelCount": 2,
+            "cancelRate": 10,
+            "projectedIncome": 102,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-28",
+            "orderCount": 23,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 109,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-29",
+            "orderCount": 26,
+            "cancelCount": 1,
+            "cancelRate": 3.85,
+            "projectedIncome": 116,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-30",
+            "orderCount": 12,
+            "cancelCount": 2,
+            "cancelRate": 16.67,
+            "projectedIncome": 123,
+            "avgOrderValue": 10
+          }
+        ],
+        "selfCheck": {
+          "projectedIncomeDiff": 0
+        },
+        "officialToday": {
+          "settleIncome": 120
+        },
+        "caliber": "",
+        "source": "platform-aggregate",
+        "crossCheck": [],
+        "byPoiD7": [
+          {
+            "poiId": "p1",
+            "poiName": "合成店一",
+            "orders": 30,
+            "cancel": 6,
+            "income": 300,
+            "rate": 0.2
+          },
+          {
+            "poiId": "p2",
+            "poiName": "合成店二",
+            "orders": 5,
+            "cancel": 0,
+            "income": 50,
+            "rate": 0
+          }
+        ],
+        "byPoiD30": [
+          {
+            "poiId": "p1",
+            "poiName": "合成店一",
+            "orders": 120,
+            "cancel": 12,
+            "income": 1200,
+            "rate": 0.1
+          }
+        ]
+      },
+      "ka": {
+        "windows": {
+          "today": {
+            "label": "今日",
+            "showCount": 0,
+            "clickCount": 0,
+            "cost": 0,
+            "cpc": 0,
+            "cpm": 0,
+            "clickRate": 0,
+            "roi": null,
+            "convertOrderAmount": 0
+          },
+          "yesterday": {
+            "label": "昨日",
+            "showCount": 5000,
+            "clickCount": 100,
+            "cost": 114.96,
+            "cpc": 0.91,
+            "cpm": 51.5,
+            "clickRate": 2,
+            "roi": 1.74,
+            "convertOrderAmount": 690.04
+          },
+          "d7": {
+            "label": "近7天",
+            "showCount": 35000,
+            "clickCount": 700,
+            "cost": 735.62,
+            "cpc": 0.91,
+            "cpm": 51.5,
+            "clickRate": 2,
+            "roi": 1.34,
+            "convertOrderAmount": 5253.45
+          },
+          "d30": {
+            "label": "近30天",
+            "showCount": 150000,
+            "clickCount": 3000,
+            "cost": 3000,
+            "cpc": 0.91,
+            "cpm": 51.5,
+            "clickRate": 2,
+            "roi": 1.39,
+            "convertOrderAmount": 20000
+          }
+        },
+        "daily": [
+          {
+            "date": "2026-09-21",
+            "prodTypeName": "",
+            "cost": 114.96,
+            "showCount": 5000,
+            "clickCount": 100,
+            "roi": 1.3,
+            "convertOrderAmount": 690.04
+          }
+        ],
+        "daily30": [
+          {
+            "date": "2026-09-01",
+            "cost": 100,
+            "showCount": 5000,
+            "clickCount": 100,
+            "roi": 1,
+            "convertOrderAmount": 600
+          },
+          {
+            "date": "2026-09-02",
+            "cost": 100.07,
+            "showCount": 5001,
+            "clickCount": 101,
+            "roi": 1.07,
+            "convertOrderAmount": 600.1
+          },
+          {
+            "date": "2026-09-03",
+            "cost": 100.14,
+            "showCount": 5002,
+            "clickCount": 102,
+            "roi": 1.14,
+            "convertOrderAmount": 600.2
+          },
+          {
+            "date": "2026-09-04",
+            "cost": 100.21,
+            "showCount": 5003,
+            "clickCount": 103,
+            "roi": 1.21,
+            "convertOrderAmount": 600.3
+          },
+          {
+            "date": "2026-09-05",
+            "cost": 100.28,
+            "showCount": 5004,
+            "clickCount": 104,
+            "roi": 1.28,
+            "convertOrderAmount": 600.4
+          },
+          {
+            "date": "2026-09-06",
+            "cost": 100.35,
+            "showCount": 5005,
+            "clickCount": 100,
+            "roi": 1.35,
+            "convertOrderAmount": 600.5
+          },
+          {
+            "date": "2026-09-07",
+            "cost": 100.42,
+            "showCount": 5006,
+            "clickCount": 101,
+            "roi": 1.41,
+            "convertOrderAmount": 600.6
+          },
+          {
+            "date": "2026-09-08",
+            "cost": 100.49,
+            "showCount": 5007,
+            "clickCount": 102,
+            "roi": 1.48,
+            "convertOrderAmount": 600.7
+          },
+          {
+            "date": "2026-09-09",
+            "cost": 100.56,
+            "showCount": 5008,
+            "clickCount": 103,
+            "roi": 1.55,
+            "convertOrderAmount": 600.8
+          },
+          {
+            "date": "2026-09-10",
+            "cost": 100.63,
+            "showCount": 5009,
+            "clickCount": 104,
+            "roi": 1.62,
+            "convertOrderAmount": 600.9
+          },
+          {
+            "date": "2026-09-11",
+            "cost": 100.7,
+            "showCount": 5010,
+            "clickCount": 100,
+            "roi": 1.69,
+            "convertOrderAmount": 601
+          },
+          {
+            "date": "2026-09-12",
+            "cost": 100.77,
+            "showCount": 5011,
+            "clickCount": 101,
+            "roi": 1.76,
+            "convertOrderAmount": 601.1
+          },
+          {
+            "date": "2026-09-13",
+            "cost": 100.84,
+            "showCount": 5012,
+            "clickCount": 102,
+            "roi": 1.82,
+            "convertOrderAmount": 601.2
+          },
+          {
+            "date": "2026-09-14",
+            "cost": 100.91,
+            "showCount": 5013,
+            "clickCount": 103,
+            "roi": 1,
+            "convertOrderAmount": 601.3
+          },
+          {
+            "date": "2026-09-15",
+            "cost": 100.98,
+            "showCount": 5014,
+            "clickCount": 104,
+            "roi": 1.07,
+            "convertOrderAmount": 601.4
+          },
+          {
+            "date": "2026-09-16",
+            "cost": 101.05,
+            "showCount": 5015,
+            "clickCount": 100,
+            "roi": 1.14,
+            "convertOrderAmount": 601.5
+          },
+          {
+            "date": "2026-09-17",
+            "cost": 101.12,
+            "showCount": 5016,
+            "clickCount": 101,
+            "roi": 1.21,
+            "convertOrderAmount": 601.6
+          },
+          {
+            "date": "2026-09-18",
+            "cost": 101.19,
+            "showCount": 5017,
+            "clickCount": 102,
+            "roi": 1.27,
+            "convertOrderAmount": 601.7
+          },
+          {
+            "date": "2026-09-19",
+            "cost": 101.26,
+            "showCount": 5018,
+            "clickCount": 103,
+            "roi": 1.34,
+            "convertOrderAmount": 601.8
+          },
+          {
+            "date": "2026-09-20",
+            "cost": 101.33,
+            "showCount": 5019,
+            "clickCount": 104,
+            "roi": 1.41,
+            "convertOrderAmount": 601.9
+          },
+          {
+            "date": "2026-09-21",
+            "cost": 101.4,
+            "showCount": 5020,
+            "clickCount": 100,
+            "roi": 1.48,
+            "convertOrderAmount": 602
+          },
+          {
+            "date": "2026-09-22",
+            "cost": 101.47,
+            "showCount": 5021,
+            "clickCount": 101,
+            "roi": 1.55,
+            "convertOrderAmount": 602.1
+          },
+          {
+            "date": "2026-09-23",
+            "cost": 101.54,
+            "showCount": 5022,
+            "clickCount": 102,
+            "roi": 1.62,
+            "convertOrderAmount": 602.2
+          },
+          {
+            "date": "2026-09-24",
+            "cost": 101.61,
+            "showCount": 5023,
+            "clickCount": 103,
+            "roi": 1.68,
+            "convertOrderAmount": 602.3
+          },
+          {
+            "date": "2026-09-25",
+            "cost": 101.68,
+            "showCount": 5024,
+            "clickCount": 104,
+            "roi": 1.75,
+            "convertOrderAmount": 602.4
+          },
+          {
+            "date": "2026-09-26",
+            "cost": 101.75,
+            "showCount": 5025,
+            "clickCount": 100,
+            "roi": 1.82,
+            "convertOrderAmount": 602.5
+          },
+          {
+            "date": "2026-09-27",
+            "cost": 101.82,
+            "showCount": 5026,
+            "clickCount": 101,
+            "roi": 1,
+            "convertOrderAmount": 602.6
+          },
+          {
+            "date": "2026-09-28",
+            "cost": 101.89,
+            "showCount": 5027,
+            "clickCount": 102,
+            "roi": 1.07,
+            "convertOrderAmount": 602.7
+          },
+          {
+            "date": "2026-09-29",
+            "cost": 101.96,
+            "showCount": 5028,
+            "clickCount": 103,
+            "roi": 1.14,
+            "convertOrderAmount": 602.8
+          },
+          {
+            "date": "2026-09-30",
+            "cost": 102.03,
+            "showCount": 5029,
+            "clickCount": 104,
+            "roi": 1.21,
+            "convertOrderAmount": 602.9
+          }
+        ],
+        "byProduct": [],
+        "realtime": {
+          "source": "ka-homepage-realtime",
+          "delayMin": 15,
+          "cost": 35.4,
+          "budget": 16350,
+          "costRate": 0.22,
+          "chainRatio": -34.9,
+          "showCount": 858,
+          "clickCount": 34,
+          "ecpm": 41.26,
+          "cpc": 1.04,
+          "spreadingPoiNum": 124,
+          "costPoiNum": 19,
+          "balance": 370.38,
+          "hourly": [
+            {
+              "hour": "00:00",
+              "cost": 1,
+              "showCount": 20,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "01:00",
+              "cost": 2,
+              "showCount": 21,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "02:00",
+              "cost": 3,
+              "showCount": 22,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "03:00",
+              "cost": 4,
+              "showCount": 23,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "04:00",
+              "cost": 1,
+              "showCount": 24,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "05:00",
+              "cost": 2,
+              "showCount": 25,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "06:00",
+              "cost": 3,
+              "showCount": 26,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "07:00",
+              "cost": 4,
+              "showCount": 27,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "08:00",
+              "cost": 1,
+              "showCount": 28,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "09:00",
+              "cost": 2,
+              "showCount": 29,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 100,
+              "roi": 50
+            },
+            {
+              "hour": "10:00",
+              "cost": 3,
+              "showCount": 30,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 200,
+              "roi": 66.67
+            },
+            {
+              "hour": "11:00",
+              "cost": 4,
+              "showCount": 31,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "12:00",
+              "cost": 1,
+              "showCount": 32,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "13:00",
+              "cost": 2,
+              "showCount": 33,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "14:00",
+              "cost": 3,
+              "showCount": 34,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "15:00",
+              "cost": 4,
+              "showCount": 35,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "16:00",
+              "cost": 1,
+              "showCount": 36,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "17:00",
+              "cost": 2,
+              "showCount": 37,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "18:00",
+              "cost": 3,
+              "showCount": 38,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "19:00",
+              "cost": 4,
+              "showCount": 39,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "20:00",
+              "cost": 1,
+              "showCount": 40,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "21:00",
+              "cost": 2,
+              "showCount": 41,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "22:00",
+              "cost": 3,
+              "showCount": 42,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "23:00",
+              "cost": 4,
+              "showCount": 43,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            }
+          ],
+          "hourlyYesterday": [
+            {
+              "hour": "00:00",
+              "cost": 2,
+              "showCount": 30,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 100,
+              "roi": 50
+            },
+            {
+              "hour": "01:00",
+              "cost": 3,
+              "showCount": 31,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 103,
+              "roi": 34.33
+            },
+            {
+              "hour": "02:00",
+              "cost": 4,
+              "showCount": 32,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 106,
+              "roi": 26.5
+            },
+            {
+              "hour": "03:00",
+              "cost": 5,
+              "showCount": 33,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 109,
+              "roi": 21.8
+            },
+            {
+              "hour": "04:00",
+              "cost": 6,
+              "showCount": 34,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 112,
+              "roi": 18.67
+            },
+            {
+              "hour": "05:00",
+              "cost": 2,
+              "showCount": 35,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 115,
+              "roi": 57.5
+            },
+            {
+              "hour": "06:00",
+              "cost": 3,
+              "showCount": 36,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 118,
+              "roi": 39.33
+            },
+            {
+              "hour": "07:00",
+              "cost": 4,
+              "showCount": 37,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 121,
+              "roi": 30.25
+            },
+            {
+              "hour": "08:00",
+              "cost": 5,
+              "showCount": 38,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 124,
+              "roi": 24.8
+            },
+            {
+              "hour": "09:00",
+              "cost": 6,
+              "showCount": 39,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 127,
+              "roi": 21.17
+            },
+            {
+              "hour": "10:00",
+              "cost": 2,
+              "showCount": 40,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 130,
+              "roi": 65
+            },
+            {
+              "hour": "11:00",
+              "cost": 3,
+              "showCount": 41,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 133,
+              "roi": 44.33
+            },
+            {
+              "hour": "12:00",
+              "cost": 4,
+              "showCount": 42,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 136,
+              "roi": 34
+            },
+            {
+              "hour": "13:00",
+              "cost": 5,
+              "showCount": 43,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 139,
+              "roi": 27.8
+            },
+            {
+              "hour": "14:00",
+              "cost": 6,
+              "showCount": 44,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 142,
+              "roi": 23.67
+            },
+            {
+              "hour": "15:00",
+              "cost": 2,
+              "showCount": 45,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 145,
+              "roi": 72.5
+            },
+            {
+              "hour": "16:00",
+              "cost": 3,
+              "showCount": 46,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 148,
+              "roi": 49.33
+            },
+            {
+              "hour": "17:00",
+              "cost": 4,
+              "showCount": 47,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 151,
+              "roi": 37.75
+            },
+            {
+              "hour": "18:00",
+              "cost": 5,
+              "showCount": 48,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 154,
+              "roi": 30.8
+            },
+            {
+              "hour": "19:00",
+              "cost": 6,
+              "showCount": 49,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 157,
+              "roi": 26.17
+            },
+            {
+              "hour": "20:00",
+              "cost": 2,
+              "showCount": 50,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 160,
+              "roi": 80
+            },
+            {
+              "hour": "21:00",
+              "cost": 3,
+              "showCount": 51,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 163,
+              "roi": 54.33
+            },
+            {
+              "hour": "22:00",
+              "cost": 4,
+              "showCount": 52,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 166,
+              "roi": 41.5
+            },
+            {
+              "hour": "23:00",
+              "cost": 5,
+              "showCount": 53,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 169,
+              "roi": 33.8
+            }
+          ]
+        }
+      },
+      "exposure": {
+        "source": "platform-total",
+        "caliber": "（合成夹具：原始文案不参与渲染）",
+        "fetchedAt": "2026-09-22T02:00:00.000Z",
+        "windows": {
+          "today": {
+            "days": 1,
+            "uv": 1000,
+            "pv": 3000,
+            "ringUv": 10,
+            "ringPv": 20,
+            "ringRateUv": 1,
+            "ringRatePv": 2,
+            "day": "2026-09-21"
+          },
+          "d7": {
+            "days": 7,
+            "uv": 7000,
+            "pv": 21000,
+            "ringUv": 100,
+            "ringPv": 300,
+            "ringRateUv": 1.4,
+            "ringRatePv": 1.4,
+            "day": "2026-09-21"
+          },
+          "d30": {
+            "days": 30,
+            "uv": 30000,
+            "pv": 90000,
+            "ringUv": 1000,
+            "ringPv": 3000,
+            "ringRateUv": 3.4,
+            "ringRatePv": 3.4,
+            "day": "2026-09-21"
+          }
+        },
+        "daily": [
+          {
+            "date": "2026-09-01",
+            "uv": 900,
+            "pv": 2700
+          },
+          {
+            "date": "2026-09-02",
+            "uv": 901,
+            "pv": 2703
+          },
+          {
+            "date": "2026-09-03",
+            "uv": 902,
+            "pv": 2706
+          },
+          {
+            "date": "2026-09-04",
+            "uv": 903,
+            "pv": 2709
+          },
+          {
+            "date": "2026-09-05",
+            "uv": 904,
+            "pv": 2712
+          },
+          {
+            "date": "2026-09-06",
+            "uv": 905,
+            "pv": 2715
+          },
+          {
+            "date": "2026-09-07",
+            "uv": 906,
+            "pv": 2718
+          },
+          {
+            "date": "2026-09-08",
+            "uv": 907,
+            "pv": 2721
+          },
+          {
+            "date": "2026-09-09",
+            "uv": 908,
+            "pv": 2724
+          },
+          {
+            "date": "2026-09-10",
+            "uv": 909,
+            "pv": 2727
+          },
+          {
+            "date": "2026-09-11",
+            "uv": 910,
+            "pv": 2730
+          },
+          {
+            "date": "2026-09-12",
+            "uv": 911,
+            "pv": 2733
+          },
+          {
+            "date": "2026-09-13",
+            "uv": 912,
+            "pv": 2736
+          },
+          {
+            "date": "2026-09-14",
+            "uv": 913,
+            "pv": 2739
+          },
+          {
+            "date": "2026-09-15",
+            "uv": 914,
+            "pv": 2742
+          },
+          {
+            "date": "2026-09-16",
+            "uv": 915,
+            "pv": 2745
+          },
+          {
+            "date": "2026-09-17",
+            "uv": 916,
+            "pv": 2748
+          },
+          {
+            "date": "2026-09-18",
+            "uv": 917,
+            "pv": 2751
+          },
+          {
+            "date": "2026-09-19",
+            "uv": 918,
+            "pv": 2754
+          },
+          {
+            "date": "2026-09-20",
+            "uv": 919,
+            "pv": 2757
+          },
+          {
+            "date": "2026-09-21",
+            "uv": 920,
+            "pv": 2760
+          },
+          {
+            "date": "2026-09-22",
+            "uv": 921,
+            "pv": 2763
+          },
+          {
+            "date": "2026-09-23",
+            "uv": 922,
+            "pv": 2766
+          },
+          {
+            "date": "2026-09-24",
+            "uv": 923,
+            "pv": 2769
+          },
+          {
+            "date": "2026-09-25",
+            "uv": 924,
+            "pv": 2772
+          },
+          {
+            "date": "2026-09-26",
+            "uv": 925,
+            "pv": 2775
+          },
+          {
+            "date": "2026-09-27",
+            "uv": 926,
+            "pv": 2778
+          },
+          {
+            "date": "2026-09-28",
+            "uv": 927,
+            "pv": 2781
+          },
+          {
+            "date": "2026-09-29",
+            "uv": 928,
+            "pv": 2784
+          },
+          {
+            "date": "2026-09-30",
+            "uv": 1000,
+            "pv": 3000
+          }
+        ],
+        "dailyCaliber": "逐日来自 flowTransformationChart"
+      },
+      "today": {
+        "date": "2026-09-22",
+        "totals": {
+          "orders": 12,
+          "cancel": 1,
+          "amount": 120,
+          "cancelRate": 0.08333333333333333
+        },
+        "recentHour": {
+          "orders": 3,
+          "cancel": 1,
+          "rate": 0.3333333333333333
+        },
+        "recent3Hour": {
+          "orders": 8,
+          "cancel": 1,
+          "rate": 0.125
+        },
+        "hourly": [
+          {
+            "hour": "09:00",
+            "orders": 3,
+            "cancel": 1,
+            "income": 100,
+            "rate": 0.3333333333333333
+          },
+          {
+            "hour": "10:00",
+            "orders": 5,
+            "cancel": 0,
+            "income": 200,
+            "rate": 0
+          }
+        ],
+        "poiRank": [
+          {
+            "poiId": "p1",
+            "poiName": "合成店一",
+            "orders": 5
+          }
+        ],
+        "dateYesterday": "2026-09-21",
+        "hourlyYesterday": [
+          {
+            "hour": "00:00",
+            "orders": 2,
+            "cancel": 1,
+            "income": 100,
+            "rate": 0.2
+          },
+          {
+            "hour": "01:00",
+            "orders": 3,
+            "cancel": 0,
+            "income": 103,
+            "rate": 0
+          },
+          {
+            "hour": "02:00",
+            "orders": 4,
+            "cancel": 0,
+            "income": 106,
+            "rate": 0
+          },
+          {
+            "hour": "03:00",
+            "orders": 5,
+            "cancel": 1,
+            "income": 109,
+            "rate": 0.2
+          },
+          {
+            "hour": "04:00",
+            "orders": 6,
+            "cancel": 0,
+            "income": 112,
+            "rate": 0
+          },
+          {
+            "hour": "05:00",
+            "orders": 2,
+            "cancel": 0,
+            "income": 115,
+            "rate": 0
+          },
+          {
+            "hour": "06:00",
+            "orders": 3,
+            "cancel": 1,
+            "income": 118,
+            "rate": 0.2
+          },
+          {
+            "hour": "07:00",
+            "orders": 4,
+            "cancel": 0,
+            "income": 121,
+            "rate": 0
+          },
+          {
+            "hour": "08:00",
+            "orders": 5,
+            "cancel": 0,
+            "income": 124,
+            "rate": 0
+          },
+          {
+            "hour": "09:00",
+            "orders": 6,
+            "cancel": 1,
+            "income": 127,
+            "rate": 0.2
+          },
+          {
+            "hour": "10:00",
+            "orders": 2,
+            "cancel": 0,
+            "income": 130,
+            "rate": 0
+          },
+          {
+            "hour": "11:00",
+            "orders": 3,
+            "cancel": 0,
+            "income": 133,
+            "rate": 0
+          },
+          {
+            "hour": "12:00",
+            "orders": 4,
+            "cancel": 1,
+            "income": 136,
+            "rate": 0.2
+          },
+          {
+            "hour": "13:00",
+            "orders": 5,
+            "cancel": 0,
+            "income": 139,
+            "rate": 0
+          },
+          {
+            "hour": "14:00",
+            "orders": 6,
+            "cancel": 0,
+            "income": 142,
+            "rate": 0
+          },
+          {
+            "hour": "15:00",
+            "orders": 2,
+            "cancel": 1,
+            "income": 145,
+            "rate": 0.2
+          },
+          {
+            "hour": "16:00",
+            "orders": 3,
+            "cancel": 0,
+            "income": 148,
+            "rate": 0
+          },
+          {
+            "hour": "17:00",
+            "orders": 4,
+            "cancel": 0,
+            "income": 151,
+            "rate": 0
+          },
+          {
+            "hour": "18:00",
+            "orders": 5,
+            "cancel": 1,
+            "income": 154,
+            "rate": 0.2
+          },
+          {
+            "hour": "19:00",
+            "orders": 6,
+            "cancel": 0,
+            "income": 157,
+            "rate": 0
+          },
+          {
+            "hour": "20:00",
+            "orders": 2,
+            "cancel": 0,
+            "income": 160,
+            "rate": 0
+          },
+          {
+            "hour": "21:00",
+            "orders": 3,
+            "cancel": 1,
+            "income": 163,
+            "rate": 0.2
+          },
+          {
+            "hour": "22:00",
+            "orders": 4,
+            "cancel": 0,
+            "income": 166,
+            "rate": 0
+          },
+          {
+            "hour": "23:00",
+            "orders": 5,
+            "cancel": 0,
+            "income": 169,
+            "rate": 0
+          }
+        ],
+        "yesterdayTotals": {
+          "orders": 20,
+          "cancel": 1,
+          "cancelRate": 0.05,
+          "projectedIncome": 200,
+          "source": "order-list-local"
+        },
+        "caliber": "近1小时取消 = 下单时间落在近 1 小时内的订单中已取消的",
+        "caliberYesterday": "昨日逐小时 = 昨日订单按 order_time 分桶（合成夹具）"
+      },
+      "taobao": {
+        "storeCount": 7,
+        "cityDist": {
+          "杭州": 4,
+          "成都": 3
+        },
+        "storeCountDetail": 1,
+        "detailWindow": "20260915~20260921",
+        "kpi": {
+          "order_cnt": 100,
+          "order_total_amt": "51875.24"
+        },
+        "kpiView": {
+          "window": "20260915~20260921",
+          "orderAmt": 51875.24,
+          "merchantIncome": null,
+          "orderCount": 100,
+          "invalidCount": null,
+          "invalidRate": 0,
+          "avgOrderAmt": null,
+          "payAmt": null,
+          "subsidyRate": null
+        },
+        "stores": [
+          {
+            "name": "闪购合成店",
+            "id": "t1",
+            "city": "杭州",
+            "supplier": "供应商",
+            "orders": 10,
+            "invalid": 1,
+            "rate": 10,
+            "amt": 1000,
+            "invalidAmt": 50,
+            "u": 1,
+            "del": 0,
+            "shop": 0,
+            "oth": 0,
+            "range": "20260915~20260921"
+          }
+        ]
+      },
+      "windows": {
+        "today": {
+          "label": "今日",
+          "projectedIncome": 120,
+          "orderCount": 12,
+          "validOrderCount": 11,
+          "cancelCount": 1,
+          "cancelRate": 8.33,
+          "avgOrderValue": 10.9,
+          "projectedIncomeSource": "todayOrderSummary（官方今日实时汇总）",
+          "promoCost": 35.4,
+          "promoShow": 858,
+          "promoClick": 34,
+          "promoRoi": 3.39,
+          "promoClickRate": null,
+          "promoUnavailable": false,
+          "promoLive": true,
+          "promoBudget": 16350,
+          "promoCostRate": 0.22,
+          "promoChainRatio": -34.9,
+          "promoNote": "今日消耗/曝光/点击来自推广首页实时接口（数据最长约 15 分钟延迟）",
+          "promoRoiNote": "推广 ROI = 预计收入 ÷ 推广消耗（本看板计算，非平台转化口径）",
+          "promoRatio": 29.5
+        },
+        "yesterday": {
+          "label": "昨日",
+          "projectedIncome": 200,
+          "orderCount": 20,
+          "validOrderCount": 19,
+          "cancelCount": 1,
+          "cancelRate": 5,
+          "avgOrderValue": 10.5,
+          "projectedIncomeSource": "fixTimeChart 昨日行 + order_cancel",
+          "promoCost": 114.96,
+          "promoShow": 5000,
+          "promoClick": 100,
+          "promoRoi": 1.74,
+          "promoClickRate": 2,
+          "promoUnavailable": false,
+          "promoLive": false,
+          "promoBudget": null,
+          "promoCostRate": null,
+          "promoChainRatio": null,
+          "promoNote": null,
+          "promoRoiNote": "推广 ROI = 预计收入 ÷ 推广消耗（本看板计算，非平台转化口径）",
+          "promoRatio": 57.48
+        },
+        "d7": {
+          "label": "近7天",
+          "projectedIncome": 984,
+          "orderCount": 123,
+          "validOrderCount": 123,
+          "cancelCount": 8,
+          "cancelRate": 6.5,
+          "avgOrderValue": 8,
+          "projectedIncomeSource": "逐日汇总",
+          "promoCost": 735.62,
+          "promoShow": 35000,
+          "promoClick": 700,
+          "promoRoi": 1.34,
+          "promoClickRate": 2,
+          "promoUnavailable": false,
+          "promoLive": false,
+          "promoBudget": null,
+          "promoCostRate": null,
+          "promoChainRatio": null,
+          "promoNote": null,
+          "promoRoiNote": "推广 ROI = 预计收入 ÷ 推广消耗（本看板计算，非平台转化口径）",
+          "promoRatio": 74.76
+        },
+        "d30": {
+          "label": "近30天",
+          "projectedIncome": 4155,
+          "orderCount": 534,
+          "validOrderCount": 534,
+          "cancelCount": 30,
+          "cancelRate": 5.62,
+          "avgOrderValue": 7.78,
+          "projectedIncomeSource": "逐日汇总",
+          "promoCost": 3000,
+          "promoShow": 150000,
+          "promoClick": 3000,
+          "promoRoi": 1.39,
+          "promoClickRate": 2,
+          "promoUnavailable": false,
+          "promoLive": false,
+          "promoBudget": null,
+          "promoCostRate": null,
+          "promoChainRatio": null,
+          "promoNote": null,
+          "promoRoiNote": "推广 ROI = 预计收入 ÷ 推广消耗（本看板计算，非平台转化口径）",
+          "promoRatio": 72.2
+        }
+      },
+      "kpiAll": {
+        "today": {
+          "label": "今日",
+          "projectedIncome": 120,
+          "orderCount": 12,
+          "validOrderCount": 11,
+          "cancelCount": 1,
+          "cancelRate": 8.33,
+          "avgOrderValue": 10.91,
+          "promoCost": 35.4,
+          "promoShow": 858,
+          "promoClick": 34,
+          "promoLive": true,
+          "promoUnavailable": false,
+          "promoRatio": 29.5,
+          "promoRoi": 3.39
+        },
+        "yesterday": {
+          "label": "昨日",
+          "projectedIncome": 200,
+          "orderCount": 20,
+          "validOrderCount": 19,
+          "cancelCount": 1,
+          "cancelRate": 5,
+          "avgOrderValue": 10.53,
+          "promoCost": 114.96,
+          "promoShow": 5000,
+          "promoClick": 100,
+          "promoLive": false,
+          "promoUnavailable": false,
+          "promoRatio": 57.48,
+          "promoRoi": 1.74
+        },
+        "d7": {
+          "label": "近7天",
+          "projectedIncome": 984,
+          "orderCount": 123,
+          "validOrderCount": 123,
+          "cancelCount": 8,
+          "cancelRate": 6.5,
+          "avgOrderValue": 8,
+          "promoCost": 735.62,
+          "promoShow": 35000,
+          "promoClick": 700,
+          "promoLive": false,
+          "promoUnavailable": false,
+          "promoRatio": 74.76,
+          "promoRoi": 1.34
+        },
+        "d30": {
+          "label": "近30天",
+          "projectedIncome": 4155,
+          "orderCount": 534,
+          "validOrderCount": 534,
+          "cancelCount": 30,
+          "cancelRate": 5.62,
+          "avgOrderValue": 7.78,
+          "promoCost": 3000,
+          "promoShow": 150000,
+          "promoClick": 3000,
+          "promoLive": false,
+          "promoUnavailable": false,
+          "promoRatio": 72.2,
+          "promoRoi": 1.39
+        }
+      },
+      "trendAll": {
+        "income": {
+          "hourly": {
+            "today": [
+              {
+                "hour": "09:00",
+                "value": 100
+              },
+              {
+                "hour": "10:00",
+                "value": 200
+              }
+            ],
+            "yesterday": [
+              {
+                "hour": "00:00",
+                "value": 100
+              },
+              {
+                "hour": "01:00",
+                "value": 103
+              },
+              {
+                "hour": "02:00",
+                "value": 106
+              },
+              {
+                "hour": "03:00",
+                "value": 109
+              },
+              {
+                "hour": "04:00",
+                "value": 112
+              },
+              {
+                "hour": "05:00",
+                "value": 115
+              },
+              {
+                "hour": "06:00",
+                "value": 118
+              },
+              {
+                "hour": "07:00",
+                "value": 121
+              },
+              {
+                "hour": "08:00",
+                "value": 124
+              },
+              {
+                "hour": "09:00",
+                "value": 127
+              },
+              {
+                "hour": "10:00",
+                "value": 130
+              },
+              {
+                "hour": "11:00",
+                "value": 133
+              },
+              {
+                "hour": "12:00",
+                "value": 136
+              },
+              {
+                "hour": "13:00",
+                "value": 139
+              },
+              {
+                "hour": "14:00",
+                "value": 142
+              },
+              {
+                "hour": "15:00",
+                "value": 145
+              },
+              {
+                "hour": "16:00",
+                "value": 148
+              },
+              {
+                "hour": "17:00",
+                "value": 151
+              },
+              {
+                "hour": "18:00",
+                "value": 154
+              },
+              {
+                "hour": "19:00",
+                "value": 157
+              },
+              {
+                "hour": "20:00",
+                "value": 160
+              },
+              {
+                "hour": "21:00",
+                "value": 163
+              },
+              {
+                "hour": "22:00",
+                "value": 166
+              },
+              {
+                "hour": "23:00",
+                "value": 169
+              }
+            ]
+          },
+          "daily": [
+            {
+              "date": "2026-09-01",
+              "value": 100
+            },
+            {
+              "date": "2026-09-02",
+              "value": 107
+            },
+            {
+              "date": "2026-09-03",
+              "value": 114
+            },
+            {
+              "date": "2026-09-04",
+              "value": 121
+            },
+            {
+              "date": "2026-09-05",
+              "value": 128
+            },
+            {
+              "date": "2026-09-06",
+              "value": 135
+            },
+            {
+              "date": "2026-09-07",
+              "value": 142
+            },
+            {
+              "date": "2026-09-08",
+              "value": 149
+            },
+            {
+              "date": "2026-09-09",
+              "value": 156
+            },
+            {
+              "date": "2026-09-10",
+              "value": 163
+            },
+            {
+              "date": "2026-09-11",
+              "value": 170
+            },
+            {
+              "date": "2026-09-12",
+              "value": 177
+            },
+            {
+              "date": "2026-09-13",
+              "value": 184
+            },
+            {
+              "date": "2026-09-14",
+              "value": 101
+            },
+            {
+              "date": "2026-09-15",
+              "value": 108
+            },
+            {
+              "date": "2026-09-16",
+              "value": 115
+            },
+            {
+              "date": "2026-09-17",
+              "value": 122
+            },
+            {
+              "date": "2026-09-18",
+              "value": 129
+            },
+            {
+              "date": "2026-09-19",
+              "value": 136
+            },
+            {
+              "date": "2026-09-20",
+              "value": 143
+            },
+            {
+              "date": "2026-09-21",
+              "value": 150
+            },
+            {
+              "date": "2026-09-22",
+              "value": 157
+            },
+            {
+              "date": "2026-09-23",
+              "value": 164
+            },
+            {
+              "date": "2026-09-24",
+              "value": 171
+            },
+            {
+              "date": "2026-09-25",
+              "value": 178
+            },
+            {
+              "date": "2026-09-26",
+              "value": 185
+            },
+            {
+              "date": "2026-09-27",
+              "value": 102
+            },
+            {
+              "date": "2026-09-28",
+              "value": 109
+            },
+            {
+              "date": "2026-09-29",
+              "value": 116
+            },
+            {
+              "date": "2026-09-30",
+              "value": 123
+            }
+          ]
+        },
+        "cancel": {
+          "hourly": {
+            "today": [
+              {
+                "hour": "09:00",
+                "cancel": 1,
+                "orders": 3
+              },
+              {
+                "hour": "10:00",
+                "cancel": 0,
+                "orders": 5
+              }
+            ],
+            "yesterday": [
+              {
+                "hour": "00:00",
+                "cancel": 1,
+                "orders": 2
+              },
+              {
+                "hour": "01:00",
+                "cancel": 0,
+                "orders": 3
+              },
+              {
+                "hour": "02:00",
+                "cancel": 0,
+                "orders": 4
+              },
+              {
+                "hour": "03:00",
+                "cancel": 1,
+                "orders": 5
+              },
+              {
+                "hour": "04:00",
+                "cancel": 0,
+                "orders": 6
+              },
+              {
+                "hour": "05:00",
+                "cancel": 0,
+                "orders": 2
+              },
+              {
+                "hour": "06:00",
+                "cancel": 1,
+                "orders": 3
+              },
+              {
+                "hour": "07:00",
+                "cancel": 0,
+                "orders": 4
+              },
+              {
+                "hour": "08:00",
+                "cancel": 0,
+                "orders": 5
+              },
+              {
+                "hour": "09:00",
+                "cancel": 1,
+                "orders": 6
+              },
+              {
+                "hour": "10:00",
+                "cancel": 0,
+                "orders": 2
+              },
+              {
+                "hour": "11:00",
+                "cancel": 0,
+                "orders": 3
+              },
+              {
+                "hour": "12:00",
+                "cancel": 1,
+                "orders": 4
+              },
+              {
+                "hour": "13:00",
+                "cancel": 0,
+                "orders": 5
+              },
+              {
+                "hour": "14:00",
+                "cancel": 0,
+                "orders": 6
+              },
+              {
+                "hour": "15:00",
+                "cancel": 1,
+                "orders": 2
+              },
+              {
+                "hour": "16:00",
+                "cancel": 0,
+                "orders": 3
+              },
+              {
+                "hour": "17:00",
+                "cancel": 0,
+                "orders": 4
+              },
+              {
+                "hour": "18:00",
+                "cancel": 1,
+                "orders": 5
+              },
+              {
+                "hour": "19:00",
+                "cancel": 0,
+                "orders": 6
+              },
+              {
+                "hour": "20:00",
+                "cancel": 0,
+                "orders": 2
+              },
+              {
+                "hour": "21:00",
+                "cancel": 1,
+                "orders": 3
+              },
+              {
+                "hour": "22:00",
+                "cancel": 0,
+                "orders": 4
+              },
+              {
+                "hour": "23:00",
+                "cancel": 0,
+                "orders": 5
+              }
+            ]
+          },
+          "daily": [
+            {
+              "date": "2026-09-01",
+              "cancel": 0,
+              "orders": 10
+            },
+            {
+              "date": "2026-09-02",
+              "cancel": 1,
+              "orders": 13
+            },
+            {
+              "date": "2026-09-03",
+              "cancel": 2,
+              "orders": 16
+            },
+            {
+              "date": "2026-09-04",
+              "cancel": 0,
+              "orders": 19
+            },
+            {
+              "date": "2026-09-05",
+              "cancel": 1,
+              "orders": 22
+            },
+            {
+              "date": "2026-09-06",
+              "cancel": 2,
+              "orders": 25
+            },
+            {
+              "date": "2026-09-07",
+              "cancel": 0,
+              "orders": 11
+            },
+            {
+              "date": "2026-09-08",
+              "cancel": 1,
+              "orders": 14
+            },
+            {
+              "date": "2026-09-09",
+              "cancel": 2,
+              "orders": 17
+            },
+            {
+              "date": "2026-09-10",
+              "cancel": 0,
+              "orders": 20
+            },
+            {
+              "date": "2026-09-11",
+              "cancel": 1,
+              "orders": 23
+            },
+            {
+              "date": "2026-09-12",
+              "cancel": 2,
+              "orders": 26
+            },
+            {
+              "date": "2026-09-13",
+              "cancel": 0,
+              "orders": 12
+            },
+            {
+              "date": "2026-09-14",
+              "cancel": 1,
+              "orders": 15
+            },
+            {
+              "date": "2026-09-15",
+              "cancel": 2,
+              "orders": 18
+            },
+            {
+              "date": "2026-09-16",
+              "cancel": 0,
+              "orders": 21
+            },
+            {
+              "date": "2026-09-17",
+              "cancel": 1,
+              "orders": 24
+            },
+            {
+              "date": "2026-09-18",
+              "cancel": 2,
+              "orders": 10
+            },
+            {
+              "date": "2026-09-19",
+              "cancel": 0,
+              "orders": 13
+            },
+            {
+              "date": "2026-09-20",
+              "cancel": 1,
+              "orders": 16
+            },
+            {
+              "date": "2026-09-21",
+              "cancel": 2,
+              "orders": 19
+            },
+            {
+              "date": "2026-09-22",
+              "cancel": 0,
+              "orders": 22
+            },
+            {
+              "date": "2026-09-23",
+              "cancel": 1,
+              "orders": 25
+            },
+            {
+              "date": "2026-09-24",
+              "cancel": 2,
+              "orders": 11
+            },
+            {
+              "date": "2026-09-25",
+              "cancel": 0,
+              "orders": 14
+            },
+            {
+              "date": "2026-09-26",
+              "cancel": 1,
+              "orders": 17
+            },
+            {
+              "date": "2026-09-27",
+              "cancel": 2,
+              "orders": 20
+            },
+            {
+              "date": "2026-09-28",
+              "cancel": 0,
+              "orders": 23
+            },
+            {
+              "date": "2026-09-29",
+              "cancel": 1,
+              "orders": 26
+            },
+            {
+              "date": "2026-09-30",
+              "cancel": 2,
+              "orders": 12
+            }
+          ]
+        },
+        "promo": {
+          "daily": [
+            {
+              "date": "2026-09-01",
+              "cost": 100,
+              "income": 100
+            },
+            {
+              "date": "2026-09-02",
+              "cost": 100.07,
+              "income": 107
+            },
+            {
+              "date": "2026-09-03",
+              "cost": 100.14,
+              "income": 114
+            },
+            {
+              "date": "2026-09-04",
+              "cost": 100.21,
+              "income": 121
+            },
+            {
+              "date": "2026-09-05",
+              "cost": 100.28,
+              "income": 128
+            },
+            {
+              "date": "2026-09-06",
+              "cost": 100.35,
+              "income": 135
+            },
+            {
+              "date": "2026-09-07",
+              "cost": 100.42,
+              "income": 142
+            },
+            {
+              "date": "2026-09-08",
+              "cost": 100.49,
+              "income": 149
+            },
+            {
+              "date": "2026-09-09",
+              "cost": 100.56,
+              "income": 156
+            },
+            {
+              "date": "2026-09-10",
+              "cost": 100.63,
+              "income": 163
+            },
+            {
+              "date": "2026-09-11",
+              "cost": 100.7,
+              "income": 170
+            },
+            {
+              "date": "2026-09-12",
+              "cost": 100.77,
+              "income": 177
+            },
+            {
+              "date": "2026-09-13",
+              "cost": 100.84,
+              "income": 184
+            },
+            {
+              "date": "2026-09-14",
+              "cost": 100.91,
+              "income": 101
+            },
+            {
+              "date": "2026-09-15",
+              "cost": 100.98,
+              "income": 108
+            },
+            {
+              "date": "2026-09-16",
+              "cost": 101.05,
+              "income": 115
+            },
+            {
+              "date": "2026-09-17",
+              "cost": 101.12,
+              "income": 122
+            },
+            {
+              "date": "2026-09-18",
+              "cost": 101.19,
+              "income": 129
+            },
+            {
+              "date": "2026-09-19",
+              "cost": 101.26,
+              "income": 136
+            },
+            {
+              "date": "2026-09-20",
+              "cost": 101.33,
+              "income": 143
+            },
+            {
+              "date": "2026-09-21",
+              "cost": 101.4,
+              "income": 150
+            },
+            {
+              "date": "2026-09-22",
+              "cost": 101.47,
+              "income": 157
+            },
+            {
+              "date": "2026-09-23",
+              "cost": 101.54,
+              "income": 164
+            },
+            {
+              "date": "2026-09-24",
+              "cost": 101.61,
+              "income": 171
+            },
+            {
+              "date": "2026-09-25",
+              "cost": 101.68,
+              "income": 178
+            },
+            {
+              "date": "2026-09-26",
+              "cost": 101.75,
+              "income": 185
+            },
+            {
+              "date": "2026-09-27",
+              "cost": 101.82,
+              "income": 102
+            },
+            {
+              "date": "2026-09-28",
+              "cost": 101.89,
+              "income": 109
+            },
+            {
+              "date": "2026-09-29",
+              "cost": 101.96,
+              "income": 116
+            },
+            {
+              "date": "2026-09-30",
+              "cost": 102.03,
+              "income": 123
+            }
+          ],
+          "hourly": {
+            "today": [
+              {
+                "hour": "00:00",
+                "cost": 1,
+                "income": 0
+              },
+              {
+                "hour": "01:00",
+                "cost": 2,
+                "income": 0
+              },
+              {
+                "hour": "02:00",
+                "cost": 3,
+                "income": 0
+              },
+              {
+                "hour": "03:00",
+                "cost": 4,
+                "income": 0
+              },
+              {
+                "hour": "04:00",
+                "cost": 1,
+                "income": 0
+              },
+              {
+                "hour": "05:00",
+                "cost": 2,
+                "income": 0
+              },
+              {
+                "hour": "06:00",
+                "cost": 3,
+                "income": 0
+              },
+              {
+                "hour": "07:00",
+                "cost": 4,
+                "income": 0
+              },
+              {
+                "hour": "08:00",
+                "cost": 1,
+                "income": 0
+              },
+              {
+                "hour": "09:00",
+                "cost": 2,
+                "income": 100
+              },
+              {
+                "hour": "10:00",
+                "cost": 3,
+                "income": 200
+              },
+              {
+                "hour": "11:00",
+                "cost": 4,
+                "income": 0
+              },
+              {
+                "hour": "12:00",
+                "cost": 1,
+                "income": 0
+              },
+              {
+                "hour": "13:00",
+                "cost": 2,
+                "income": 0
+              },
+              {
+                "hour": "14:00",
+                "cost": 3,
+                "income": 0
+              },
+              {
+                "hour": "15:00",
+                "cost": 4,
+                "income": 0
+              },
+              {
+                "hour": "16:00",
+                "cost": 1,
+                "income": 0
+              },
+              {
+                "hour": "17:00",
+                "cost": 2,
+                "income": 0
+              },
+              {
+                "hour": "18:00",
+                "cost": 3,
+                "income": 0
+              },
+              {
+                "hour": "19:00",
+                "cost": 4,
+                "income": 0
+              },
+              {
+                "hour": "20:00",
+                "cost": 1,
+                "income": 0
+              },
+              {
+                "hour": "21:00",
+                "cost": 2,
+                "income": 0
+              },
+              {
+                "hour": "22:00",
+                "cost": 3,
+                "income": 0
+              },
+              {
+                "hour": "23:00",
+                "cost": 4,
+                "income": 0
+              }
+            ],
+            "yesterday": []
+          }
+        },
+        "expo": {
+          "daily": [
+            {
+              "date": "2026-09-01",
+              "uv": 900,
+              "pv": 2700
+            },
+            {
+              "date": "2026-09-02",
+              "uv": 901,
+              "pv": 2703
+            },
+            {
+              "date": "2026-09-03",
+              "uv": 902,
+              "pv": 2706
+            },
+            {
+              "date": "2026-09-04",
+              "uv": 903,
+              "pv": 2709
+            },
+            {
+              "date": "2026-09-05",
+              "uv": 904,
+              "pv": 2712
+            },
+            {
+              "date": "2026-09-06",
+              "uv": 905,
+              "pv": 2715
+            },
+            {
+              "date": "2026-09-07",
+              "uv": 906,
+              "pv": 2718
+            },
+            {
+              "date": "2026-09-08",
+              "uv": 907,
+              "pv": 2721
+            },
+            {
+              "date": "2026-09-09",
+              "uv": 908,
+              "pv": 2724
+            },
+            {
+              "date": "2026-09-10",
+              "uv": 909,
+              "pv": 2727
+            },
+            {
+              "date": "2026-09-11",
+              "uv": 910,
+              "pv": 2730
+            },
+            {
+              "date": "2026-09-12",
+              "uv": 911,
+              "pv": 2733
+            },
+            {
+              "date": "2026-09-13",
+              "uv": 912,
+              "pv": 2736
+            },
+            {
+              "date": "2026-09-14",
+              "uv": 913,
+              "pv": 2739
+            },
+            {
+              "date": "2026-09-15",
+              "uv": 914,
+              "pv": 2742
+            },
+            {
+              "date": "2026-09-16",
+              "uv": 915,
+              "pv": 2745
+            },
+            {
+              "date": "2026-09-17",
+              "uv": 916,
+              "pv": 2748
+            },
+            {
+              "date": "2026-09-18",
+              "uv": 917,
+              "pv": 2751
+            },
+            {
+              "date": "2026-09-19",
+              "uv": 918,
+              "pv": 2754
+            },
+            {
+              "date": "2026-09-20",
+              "uv": 919,
+              "pv": 2757
+            },
+            {
+              "date": "2026-09-21",
+              "uv": 920,
+              "pv": 2760
+            },
+            {
+              "date": "2026-09-22",
+              "uv": 921,
+              "pv": 2763
+            },
+            {
+              "date": "2026-09-23",
+              "uv": 922,
+              "pv": 2766
+            },
+            {
+              "date": "2026-09-24",
+              "uv": 923,
+              "pv": 2769
+            },
+            {
+              "date": "2026-09-25",
+              "uv": 924,
+              "pv": 2772
+            },
+            {
+              "date": "2026-09-26",
+              "uv": 925,
+              "pv": 2775
+            },
+            {
+              "date": "2026-09-27",
+              "uv": 926,
+              "pv": 2778
+            },
+            {
+              "date": "2026-09-28",
+              "uv": 927,
+              "pv": 2781
+            },
+            {
+              "date": "2026-09-29",
+              "uv": 928,
+              "pv": 2784
+            },
+            {
+              "date": "2026-09-30",
+              "uv": 1000,
+              "pv": 3000
+            }
+          ],
+          "flow": null
+        }
+      },
+      "highCancelD7": [
+        {
+          "poiId": "p1",
+          "poiName": "合成店一",
+          "orders": 30,
+          "cancel": 6,
+          "income": 300,
+          "rate": 0.2
+        }
+      ],
+      "highCancelD30": [
+        {
+          "poiId": "p1",
+          "poiName": "合成店一",
+          "orders": 120,
+          "cancel": 12,
+          "income": 1200,
+          "rate": 0.1
+        }
+      ],
+      "storeChart": [
+        {
+          "name": "营业中",
+          "value": 3
+        },
+        {
+          "name": "停业中",
+          "value": 1
+        }
+      ]
+    },
+    "yifeng": {
+      "key": "yifeng",
+      "label": "品牌B",
+      "fullLabel": "品牌B",
+      "warnings": [
+        "闪购营业统计缺失（未跑 fetch-taobao-stats.mjs）—— 平台切换器的闪购视图会是空的",
+        "闪购推广数据缺失（未跑 fetch-taobao-promo.mjs）—— 闪购视图的推广板块将如实降级"
+      ],
+      "dataTime": "2026-09-22 09:00:00",
+      "acctId": "acct-yifeng",
+      "mtStores": [
+        {
+          "id": "s1",
+          "name": "合成店一",
+          "city": "杭州",
+          "status": "营业中",
+          "restReason": ""
+        }
+      ],
+      "mtStatusDist": {
+        "营业中": 3,
+        "停业中": 1
+      },
+      "unifiedRows": [
+        {
+          "name": "合成店一",
+          "city": "杭州",
+          "kind": "planned",
+          "mtId": "p1",
+          "tbId": "t1",
+          "mtStatus": "营业中",
+          "offlineReason": "",
+          "planned": true
+        },
+        {
+          "name": "合成店二",
+          "city": "成都",
+          "kind": "normal_offline",
+          "mtId": "p2",
+          "tbId": "",
+          "mtStatus": "停业中",
+          "offlineReason": "",
+          "planned": false
+        },
+        {
+          "name": "合成店三",
+          "city": "",
+          "kind": "unplanned",
+          "mtId": "",
+          "tbId": "t3",
+          "mtStatus": "",
+          "offlineReason": "",
+          "planned": false
+        }
+      ],
+      "plan": {
+        "total": 4,
+        "kept": 3,
+        "duplicate": 1,
+        "byKind": {
+          "planned": 1,
+          "normal_offline": 1,
+          "unplanned": 1
+        },
+        "listed": 1,
+        "unplanned": 2,
+        "bothPlatforms": 1,
+        "onlyMeituan": 1,
+        "onlyEleme": 1,
+        "noId": 0
+      },
+      "anomalies": [
+        {
+          "name": "合成店二",
+          "city": "成都",
+          "platforms": [
+            {
+              "p": "美团",
+              "status": "停业中",
+              "from": "接口"
+            }
+          ],
+          "planned": false,
+          "offlineReason": ""
+        },
+        {
+          "name": "合成店三",
+          "city": "",
+          "platforms": [
+            {
+              "p": "闪购",
+              "status": "休息中",
+              "from": "台账"
+            }
+          ],
+          "planned": true,
+          "offlineReason": ""
+        }
+      ],
+      "income": {
+        "windows": {
+          "today": {
+            "label": "今日",
+            "start": "2026-09-22",
+            "end": "2026-09-21",
+            "orderCount": 12,
+            "validOrderCount": 11,
+            "cancelCount": 1,
+            "cancelRate": 8.33,
+            "projectedIncome": 120,
+            "cancelIncome": null,
+            "avgOrderValue": 10.9,
+            "source": "todayOrderSummary（官方今日实时汇总）"
+          },
+          "yesterday": {
+            "label": "昨日",
+            "start": "2026-09-21",
+            "end": "2026-09-21",
+            "orderCount": 20,
+            "validOrderCount": 19,
+            "cancelCount": 1,
+            "cancelRate": 5,
+            "projectedIncome": 200,
+            "cancelIncome": null,
+            "avgOrderValue": 10.5,
+            "source": "fixTimeChart 昨日行 + order_cancel"
+          },
+          "d7": {
+            "label": "近7天",
+            "start": "2026-09-24",
+            "end": "2026-09-30",
+            "orderCount": 124,
+            "validOrderCount": 124,
+            "cancelCount": 7,
+            "cancelRate": 5.65,
+            "projectedIncome": 929,
+            "cancelIncome": null,
+            "avgOrderValue": 7.49,
+            "source": "逐日汇总"
+          },
+          "d30": {
+            "label": "近30天",
+            "start": "2026-09-01",
+            "end": "2026-09-30",
+            "orderCount": 531,
+            "validOrderCount": 531,
+            "cancelCount": 30,
+            "cancelRate": 5.65,
+            "projectedIncome": 4215,
+            "cancelIncome": null,
+            "avgOrderValue": 7.94,
+            "source": "逐日汇总"
+          }
+        },
+        "daily": [
+          {
+            "date": "2026-09-01",
+            "orderCount": 15,
+            "cancelCount": 2,
+            "cancelRate": 13.33,
+            "projectedIncome": 105,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-02",
+            "orderCount": 18,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 112,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-03",
+            "orderCount": 21,
+            "cancelCount": 1,
+            "cancelRate": 4.76,
+            "projectedIncome": 119,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-04",
+            "orderCount": 24,
+            "cancelCount": 2,
+            "cancelRate": 8.33,
+            "projectedIncome": 126,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-05",
+            "orderCount": 10,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 133,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-06",
+            "orderCount": 13,
+            "cancelCount": 1,
+            "cancelRate": 7.69,
+            "projectedIncome": 140,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-07",
+            "orderCount": 16,
+            "cancelCount": 2,
+            "cancelRate": 12.5,
+            "projectedIncome": 147,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-08",
+            "orderCount": 19,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 154,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-09",
+            "orderCount": 22,
+            "cancelCount": 1,
+            "cancelRate": 4.55,
+            "projectedIncome": 161,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-10",
+            "orderCount": 25,
+            "cancelCount": 2,
+            "cancelRate": 8,
+            "projectedIncome": 168,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-11",
+            "orderCount": 11,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 175,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-12",
+            "orderCount": 14,
+            "cancelCount": 1,
+            "cancelRate": 7.14,
+            "projectedIncome": 182,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-13",
+            "orderCount": 17,
+            "cancelCount": 2,
+            "cancelRate": 11.76,
+            "projectedIncome": 189,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-14",
+            "orderCount": 20,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 106,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-15",
+            "orderCount": 23,
+            "cancelCount": 1,
+            "cancelRate": 4.35,
+            "projectedIncome": 113,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-16",
+            "orderCount": 26,
+            "cancelCount": 2,
+            "cancelRate": 7.69,
+            "projectedIncome": 120,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-17",
+            "orderCount": 12,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 127,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-18",
+            "orderCount": 15,
+            "cancelCount": 1,
+            "cancelRate": 6.67,
+            "projectedIncome": 134,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-19",
+            "orderCount": 18,
+            "cancelCount": 2,
+            "cancelRate": 11.11,
+            "projectedIncome": 141,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-20",
+            "orderCount": 21,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 148,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-21",
+            "orderCount": 24,
+            "cancelCount": 1,
+            "cancelRate": 4.17,
+            "projectedIncome": 155,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-22",
+            "orderCount": 10,
+            "cancelCount": 2,
+            "cancelRate": 20,
+            "projectedIncome": 162,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-23",
+            "orderCount": 13,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 169,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-24",
+            "orderCount": 16,
+            "cancelCount": 1,
+            "cancelRate": 6.25,
+            "projectedIncome": 176,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-25",
+            "orderCount": 19,
+            "cancelCount": 2,
+            "cancelRate": 10.53,
+            "projectedIncome": 183,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-26",
+            "orderCount": 22,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 100,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-27",
+            "orderCount": 25,
+            "cancelCount": 1,
+            "cancelRate": 4,
+            "projectedIncome": 107,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-28",
+            "orderCount": 11,
+            "cancelCount": 2,
+            "cancelRate": 18.18,
+            "projectedIncome": 114,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-29",
+            "orderCount": 14,
+            "cancelCount": 0,
+            "cancelRate": 0,
+            "projectedIncome": 121,
+            "avgOrderValue": 10
+          },
+          {
+            "date": "2026-09-30",
+            "orderCount": 17,
+            "cancelCount": 1,
+            "cancelRate": 5.88,
+            "projectedIncome": 128,
+            "avgOrderValue": 10
+          }
+        ],
+        "selfCheck": {
+          "projectedIncomeDiff": 0
+        },
+        "officialToday": {
+          "settleIncome": 120
+        },
+        "caliber": "",
+        "source": "platform-aggregate",
+        "crossCheck": [],
+        "byPoiD7": [
+          {
+            "poiId": "p1",
+            "poiName": "合成店一",
+            "orders": 30,
+            "cancel": 6,
+            "income": 300,
+            "rate": 0.2
+          },
+          {
+            "poiId": "p2",
+            "poiName": "合成店二",
+            "orders": 5,
+            "cancel": 0,
+            "income": 50,
+            "rate": 0
+          }
+        ],
+        "byPoiD30": [
+          {
+            "poiId": "p1",
+            "poiName": "合成店一",
+            "orders": 120,
+            "cancel": 12,
+            "income": 1200,
+            "rate": 0.1
+          }
+        ]
+      },
+      "ka": {
+        "windows": {
+          "today": {
+            "label": "今日",
+            "showCount": 0,
+            "clickCount": 0,
+            "cost": 0,
+            "cpc": 0,
+            "cpm": 0,
+            "clickRate": 0,
+            "roi": null,
+            "convertOrderAmount": 0
+          },
+          "yesterday": {
+            "label": "昨日",
+            "showCount": 5000,
+            "clickCount": 100,
+            "cost": 114.96,
+            "cpc": 0.91,
+            "cpm": 51.5,
+            "clickRate": 2,
+            "roi": 1.74,
+            "convertOrderAmount": 690.04
+          },
+          "d7": {
+            "label": "近7天",
+            "showCount": 35000,
+            "clickCount": 700,
+            "cost": 735.62,
+            "cpc": 0.91,
+            "cpm": 51.5,
+            "clickRate": 2,
+            "roi": 1.26,
+            "convertOrderAmount": 5253.45
+          },
+          "d30": {
+            "label": "近30天",
+            "showCount": 150000,
+            "clickCount": 3000,
+            "cost": 3000,
+            "cpc": 0.91,
+            "cpm": 51.5,
+            "clickRate": 2,
+            "roi": 1.41,
+            "convertOrderAmount": 20000
+          }
+        },
+        "daily": [
+          {
+            "date": "2026-09-21",
+            "prodTypeName": "",
+            "cost": 114.96,
+            "showCount": 5000,
+            "clickCount": 100,
+            "roi": 1.35,
+            "convertOrderAmount": 690.04
+          }
+        ],
+        "daily30": [
+          {
+            "date": "2026-09-01",
+            "cost": 100,
+            "showCount": 5000,
+            "clickCount": 100,
+            "roi": 1.05,
+            "convertOrderAmount": 600
+          },
+          {
+            "date": "2026-09-02",
+            "cost": 100.07,
+            "showCount": 5001,
+            "clickCount": 101,
+            "roi": 1.12,
+            "convertOrderAmount": 600.1
+          },
+          {
+            "date": "2026-09-03",
+            "cost": 100.14,
+            "showCount": 5002,
+            "clickCount": 102,
+            "roi": 1.19,
+            "convertOrderAmount": 600.2
+          },
+          {
+            "date": "2026-09-04",
+            "cost": 100.21,
+            "showCount": 5003,
+            "clickCount": 103,
+            "roi": 1.26,
+            "convertOrderAmount": 600.3
+          },
+          {
+            "date": "2026-09-05",
+            "cost": 100.28,
+            "showCount": 5004,
+            "clickCount": 104,
+            "roi": 1.33,
+            "convertOrderAmount": 600.4
+          },
+          {
+            "date": "2026-09-06",
+            "cost": 100.35,
+            "showCount": 5005,
+            "clickCount": 100,
+            "roi": 1.4,
+            "convertOrderAmount": 600.5
+          },
+          {
+            "date": "2026-09-07",
+            "cost": 100.42,
+            "showCount": 5006,
+            "clickCount": 101,
+            "roi": 1.46,
+            "convertOrderAmount": 600.6
+          },
+          {
+            "date": "2026-09-08",
+            "cost": 100.49,
+            "showCount": 5007,
+            "clickCount": 102,
+            "roi": 1.53,
+            "convertOrderAmount": 600.7
+          },
+          {
+            "date": "2026-09-09",
+            "cost": 100.56,
+            "showCount": 5008,
+            "clickCount": 103,
+            "roi": 1.6,
+            "convertOrderAmount": 600.8
+          },
+          {
+            "date": "2026-09-10",
+            "cost": 100.63,
+            "showCount": 5009,
+            "clickCount": 104,
+            "roi": 1.67,
+            "convertOrderAmount": 600.9
+          },
+          {
+            "date": "2026-09-11",
+            "cost": 100.7,
+            "showCount": 5010,
+            "clickCount": 100,
+            "roi": 1.74,
+            "convertOrderAmount": 601
+          },
+          {
+            "date": "2026-09-12",
+            "cost": 100.77,
+            "showCount": 5011,
+            "clickCount": 101,
+            "roi": 1.81,
+            "convertOrderAmount": 601.1
+          },
+          {
+            "date": "2026-09-13",
+            "cost": 100.84,
+            "showCount": 5012,
+            "clickCount": 102,
+            "roi": 1.87,
+            "convertOrderAmount": 601.2
+          },
+          {
+            "date": "2026-09-14",
+            "cost": 100.91,
+            "showCount": 5013,
+            "clickCount": 103,
+            "roi": 1.05,
+            "convertOrderAmount": 601.3
+          },
+          {
+            "date": "2026-09-15",
+            "cost": 100.98,
+            "showCount": 5014,
+            "clickCount": 104,
+            "roi": 1.12,
+            "convertOrderAmount": 601.4
+          },
+          {
+            "date": "2026-09-16",
+            "cost": 101.05,
+            "showCount": 5015,
+            "clickCount": 100,
+            "roi": 1.19,
+            "convertOrderAmount": 601.5
+          },
+          {
+            "date": "2026-09-17",
+            "cost": 101.12,
+            "showCount": 5016,
+            "clickCount": 101,
+            "roi": 1.26,
+            "convertOrderAmount": 601.6
+          },
+          {
+            "date": "2026-09-18",
+            "cost": 101.19,
+            "showCount": 5017,
+            "clickCount": 102,
+            "roi": 1.32,
+            "convertOrderAmount": 601.7
+          },
+          {
+            "date": "2026-09-19",
+            "cost": 101.26,
+            "showCount": 5018,
+            "clickCount": 103,
+            "roi": 1.39,
+            "convertOrderAmount": 601.8
+          },
+          {
+            "date": "2026-09-20",
+            "cost": 101.33,
+            "showCount": 5019,
+            "clickCount": 104,
+            "roi": 1.46,
+            "convertOrderAmount": 601.9
+          },
+          {
+            "date": "2026-09-21",
+            "cost": 101.4,
+            "showCount": 5020,
+            "clickCount": 100,
+            "roi": 1.53,
+            "convertOrderAmount": 602
+          },
+          {
+            "date": "2026-09-22",
+            "cost": 101.47,
+            "showCount": 5021,
+            "clickCount": 101,
+            "roi": 1.6,
+            "convertOrderAmount": 602.1
+          },
+          {
+            "date": "2026-09-23",
+            "cost": 101.54,
+            "showCount": 5022,
+            "clickCount": 102,
+            "roi": 1.66,
+            "convertOrderAmount": 602.2
+          },
+          {
+            "date": "2026-09-24",
+            "cost": 101.61,
+            "showCount": 5023,
+            "clickCount": 103,
+            "roi": 1.73,
+            "convertOrderAmount": 602.3
+          },
+          {
+            "date": "2026-09-25",
+            "cost": 101.68,
+            "showCount": 5024,
+            "clickCount": 104,
+            "roi": 1.8,
+            "convertOrderAmount": 602.4
+          },
+          {
+            "date": "2026-09-26",
+            "cost": 101.75,
+            "showCount": 5025,
+            "clickCount": 100,
+            "roi": 0.98,
+            "convertOrderAmount": 602.5
+          },
+          {
+            "date": "2026-09-27",
+            "cost": 101.82,
+            "showCount": 5026,
+            "clickCount": 101,
+            "roi": 1.05,
+            "convertOrderAmount": 602.6
+          },
+          {
+            "date": "2026-09-28",
+            "cost": 101.89,
+            "showCount": 5027,
+            "clickCount": 102,
+            "roi": 1.12,
+            "convertOrderAmount": 602.7
+          },
+          {
+            "date": "2026-09-29",
+            "cost": 101.96,
+            "showCount": 5028,
+            "clickCount": 103,
+            "roi": 1.19,
+            "convertOrderAmount": 602.8
+          },
+          {
+            "date": "2026-09-30",
+            "cost": 102.03,
+            "showCount": 5029,
+            "clickCount": 104,
+            "roi": 1.25,
+            "convertOrderAmount": 602.9
+          }
+        ],
+        "byProduct": [],
+        "realtime": {
+          "source": "ka-homepage-realtime",
+          "delayMin": 15,
+          "cost": 35.4,
+          "budget": 16350,
+          "costRate": 0.22,
+          "chainRatio": -34.9,
+          "showCount": 858,
+          "clickCount": 34,
+          "ecpm": 41.26,
+          "cpc": 1.04,
+          "spreadingPoiNum": 124,
+          "costPoiNum": 19,
+          "balance": 370.38,
+          "hourly": [
+            {
+              "hour": "00:00",
+              "cost": 1,
+              "showCount": 20,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "01:00",
+              "cost": 2,
+              "showCount": 21,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "02:00",
+              "cost": 3,
+              "showCount": 22,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "03:00",
+              "cost": 4,
+              "showCount": 23,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "04:00",
+              "cost": 1,
+              "showCount": 24,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "05:00",
+              "cost": 2,
+              "showCount": 25,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "06:00",
+              "cost": 3,
+              "showCount": 26,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "07:00",
+              "cost": 4,
+              "showCount": 27,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "08:00",
+              "cost": 1,
+              "showCount": 28,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "09:00",
+              "cost": 2,
+              "showCount": 29,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 100,
+              "roi": 50
+            },
+            {
+              "hour": "10:00",
+              "cost": 3,
+              "showCount": 30,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 200,
+              "roi": 66.67
+            },
+            {
+              "hour": "11:00",
+              "cost": 4,
+              "showCount": 31,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "12:00",
+              "cost": 1,
+              "showCount": 32,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "13:00",
+              "cost": 2,
+              "showCount": 33,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "14:00",
+              "cost": 3,
+              "showCount": 34,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "15:00",
+              "cost": 4,
+              "showCount": 35,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "16:00",
+              "cost": 1,
+              "showCount": 36,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "17:00",
+              "cost": 2,
+              "showCount": 37,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "18:00",
+              "cost": 3,
+              "showCount": 38,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "19:00",
+              "cost": 4,
+              "showCount": 39,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "20:00",
+              "cost": 1,
+              "showCount": 40,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "21:00",
+              "cost": 2,
+              "showCount": 41,
+              "clickCount": 1,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "22:00",
+              "cost": 3,
+              "showCount": 42,
+              "clickCount": 2,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            },
+            {
+              "hour": "23:00",
+              "cost": 4,
+              "showCount": 43,
+              "clickCount": 3,
+              "ecpm": 40,
+              "cpc": 1,
+              "income": 0,
+              "roi": 0
+            }
+          ],
+          "hourlyYesterday": [
+            {
+              "hour": "00:00",
+              "cost": 2,
+              "showCount": 30,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 100,
+              "roi": 50
+            },
+            {
+              "hour": "01:00",
+              "cost": 3,
+              "showCount": 31,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 103,
+              "roi": 34.33
+            },
+            {
+              "hour": "02:00",
+              "cost": 4,
+              "showCount": 32,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 106,
+              "roi": 26.5
+            },
+            {
+              "hour": "03:00",
+              "cost": 5,
+              "showCount": 33,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 109,
+              "roi": 21.8
+            },
+            {
+              "hour": "04:00",
+              "cost": 6,
+              "showCount": 34,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 112,
+              "roi": 18.67
+            },
+            {
+              "hour": "05:00",
+              "cost": 2,
+              "showCount": 35,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 115,
+              "roi": 57.5
+            },
+            {
+              "hour": "06:00",
+              "cost": 3,
+              "showCount": 36,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 118,
+              "roi": 39.33
+            },
+            {
+              "hour": "07:00",
+              "cost": 4,
+              "showCount": 37,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 121,
+              "roi": 30.25
+            },
+            {
+              "hour": "08:00",
+              "cost": 5,
+              "showCount": 38,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 124,
+              "roi": 24.8
+            },
+            {
+              "hour": "09:00",
+              "cost": 6,
+              "showCount": 39,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 127,
+              "roi": 21.17
+            },
+            {
+              "hour": "10:00",
+              "cost": 2,
+              "showCount": 40,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 130,
+              "roi": 65
+            },
+            {
+              "hour": "11:00",
+              "cost": 3,
+              "showCount": 41,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 133,
+              "roi": 44.33
+            },
+            {
+              "hour": "12:00",
+              "cost": 4,
+              "showCount": 42,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 136,
+              "roi": 34
+            },
+            {
+              "hour": "13:00",
+              "cost": 5,
+              "showCount": 43,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 139,
+              "roi": 27.8
+            },
+            {
+              "hour": "14:00",
+              "cost": 6,
+              "showCount": 44,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 142,
+              "roi": 23.67
+            },
+            {
+              "hour": "15:00",
+              "cost": 2,
+              "showCount": 45,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 145,
+              "roi": 72.5
+            },
+            {
+              "hour": "16:00",
+              "cost": 3,
+              "showCount": 46,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 148,
+              "roi": 49.33
+            },
+            {
+              "hour": "17:00",
+              "cost": 4,
+              "showCount": 47,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 151,
+              "roi": 37.75
+            },
+            {
+              "hour": "18:00",
+              "cost": 5,
+              "showCount": 48,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 154,
+              "roi": 30.8
+            },
+            {
+              "hour": "19:00",
+              "cost": 6,
+              "showCount": 49,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 157,
+              "roi": 26.17
+            },
+            {
+              "hour": "20:00",
+              "cost": 2,
+              "showCount": 50,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 160,
+              "roi": 80
+            },
+            {
+              "hour": "21:00",
+              "cost": 3,
+              "showCount": 51,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 163,
+              "roi": 54.33
+            },
+            {
+              "hour": "22:00",
+              "cost": 4,
+              "showCount": 52,
+              "clickCount": 2,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 166,
+              "roi": 41.5
+            },
+            {
+              "hour": "23:00",
+              "cost": 5,
+              "showCount": 53,
+              "clickCount": 3,
+              "ecpm": 45,
+              "cpc": 1.1,
+              "income": 169,
+              "roi": 33.8
+            }
+          ]
+        }
+      },
+      "exposure": {
+        "source": "platform-total",
+        "caliber": "（合成夹具：原始文案不参与渲染）",
+        "fetchedAt": "2026-09-22T02:00:00.000Z",
+        "windows": {
+          "today": {
+            "days": 1,
+            "uv": 1000,
+            "pv": 3000,
+            "ringUv": 10,
+            "ringPv": 20,
+            "ringRateUv": 1,
+            "ringRatePv": 2,
+            "day": "2026-09-21"
+          },
+          "d7": {
+            "days": 7,
+            "uv": 7000,
+            "pv": 21000,
+            "ringUv": 100,
+            "ringPv": 300,
+            "ringRateUv": 1.4,
+            "ringRatePv": 1.4,
+            "day": "2026-09-21"
+          },
+          "d30": {
+            "days": 30,
+            "uv": 30000,
+            "pv": 90000,
+            "ringUv": 1000,
+            "ringPv": 3000,
+            "ringRateUv": 3.4,
+            "ringRatePv": 3.4,
+            "day": "2026-09-21"
+          }
+        },
+        "daily": [
+          {
+            "date": "2026-09-01",
+            "uv": 900,
+            "pv": 2700
+          },
+          {
+            "date": "2026-09-02",
+            "uv": 901,
+            "pv": 2703
+          },
+          {
+            "date": "2026-09-03",
+            "uv": 902,
+            "pv": 2706
+          },
+          {
+            "date": "2026-09-04",
+            "uv": 903,
+            "pv": 2709
+          },
+          {
+            "date": "2026-09-05",
+            "uv": 904,
+            "pv": 2712
+          },
+          {
+            "date": "2026-09-06",
+            "uv": 905,
+            "pv": 2715
+          },
+          {
+            "date": "2026-09-07",
+            "uv": 906,
+            "pv": 2718
+          },
+          {
+            "date": "2026-09-08",
+            "uv": 907,
+            "pv": 2721
+          },
+          {
+            "date": "2026-09-09",
+            "uv": 908,
+            "pv": 2724
+          },
+          {
+            "date": "2026-09-10",
+            "uv": 909,
+            "pv": 2727
+          },
+          {
+            "date": "2026-09-11",
+            "uv": 910,
+            "pv": 2730
+          },
+          {
+            "date": "2026-09-12",
+            "uv": 911,
+            "pv": 2733
+          },
+          {
+            "date": "2026-09-13",
+            "uv": 912,
+            "pv": 2736
+          },
+          {
+            "date": "2026-09-14",
+            "uv": 913,
+            "pv": 2739
+          },
+          {
+            "date": "2026-09-15",
+            "uv": 914,
+            "pv": 2742
+          },
+          {
+            "date": "2026-09-16",
+            "uv": 915,
+            "pv": 2745
+          },
+          {
+            "date": "2026-09-17",
+            "uv": 916,
+            "pv": 2748
+          },
+          {
+            "date": "2026-09-18",
+            "uv": 917,
+            "pv": 2751
+          },
+          {
+            "date": "2026-09-19",
+            "uv": 918,
+            "pv": 2754
+          },
+          {
+            "date": "2026-09-20",
+            "uv": 919,
+            "pv": 2757
+          },
+          {
+            "date": "2026-09-21",
+            "uv": 920,
+            "pv": 2760
+          },
+          {
+            "date": "2026-09-22",
+            "uv": 921,
+            "pv": 2763
+          },
+          {
+            "date": "2026-09-23",
+            "uv": 922,
+            "pv": 2766
+          },
+          {
+            "date": "2026-09-24",
+            "uv": 923,
+            "pv": 2769
+          },
+          {
+            "date": "2026-09-25",
+            "uv": 924,
+            "pv": 2772
+          },
+          {
+            "date": "2026-09-26",
+            "uv": 925,
+            "pv": 2775
+          },
+          {
+            "date": "2026-09-27",
+            "uv": 926,
+            "pv": 2778
+          },
+          {
+            "date": "2026-09-28",
+            "uv": 927,
+            "pv": 2781
+          },
+          {
+            "date": "2026-09-29",
+            "uv": 928,
+            "pv": 2784
+          },
+          {
+            "date": "2026-09-30",
+            "uv": 1000,
+            "pv": 3000
+          }
+        ],
+        "dailyCaliber": "逐日来自 flowTransformationChart"
+      },
+      "today": {
+        "date": "2026-09-22",
+        "totals": {
+          "orders": 12,
+          "cancel": 1,
+          "amount": 120,
+          "cancelRate": 0.08333333333333333
+        },
+        "recentHour": {
+          "orders": 3,
+          "cancel": 1,
+          "rate": 0.3333333333333333
+        },
+        "recent3Hour": {
+          "orders": 8,
+          "cancel": 1,
+          "rate": 0.125
+        },
+        "hourly": [
+          {
+            "hour": "09:00",
+            "orders": 3,
+            "cancel": 1,
+            "income": 100,
+            "rate": 0.3333333333333333
+          },
+          {
+            "hour": "10:00",
+            "orders": 5,
+            "cancel": 0,
+            "income": 200,
+            "rate": 0
+          }
+        ],
+        "poiRank": [
+          {
+            "poiId": "p1",
+            "poiName": "合成店一",
+            "orders": 5
+          }
+        ],
+        "dateYesterday": "2026-09-21",
+        "hourlyYesterday": [
+          {
+            "hour": "00:00",
+            "orders": 2,
+            "cancel": 1,
+            "income": 100,
+            "rate": 0.2
+          },
+          {
+            "hour": "01:00",
+            "orders": 3,
+            "cancel": 0,
+            "income": 103,
+            "rate": 0
+          },
+          {
+            "hour": "02:00",
+            "orders": 4,
+            "cancel": 0,
+            "income": 106,
+            "rate": 0
+          },
+          {
+            "hour": "03:00",
+            "orders": 5,
+            "cancel": 1,
+            "income": 109,
+            "rate": 0.2
+          },
+          {
+            "hour": "04:00",
+            "orders": 6,
+            "cancel": 0,
+            "income": 112,
+            "rate": 0
+          },
+          {
+            "hour": "05:00",
+            "orders": 2,
+            "cancel": 0,
+            "income": 115,
+            "rate": 0
+          },
+          {
+            "hour": "06:00",
+            "orders": 3,
+            "cancel": 1,
+            "income": 118,
+            "rate": 0.2
+          },
+          {
+            "hour": "07:00",
+            "orders": 4,
+            "cancel": 0,
+            "income": 121,
+            "rate": 0
+          },
+          {
+            "hour": "08:00",
+            "orders": 5,
+            "cancel": 0,
+            "income": 124,
+            "rate": 0
+          },
+          {
+            "hour": "09:00",
+            "orders": 6,
+            "cancel": 1,
+            "income": 127,
+            "rate": 0.2
+          },
+          {
+            "hour": "10:00",
+            "orders": 2,
+            "cancel": 0,
+            "income": 130,
+            "rate": 0
+          },
+          {
+            "hour": "11:00",
+            "orders": 3,
+            "cancel": 0,
+            "income": 133,
+            "rate": 0
+          },
+          {
+            "hour": "12:00",
+            "orders": 4,
+            "cancel": 1,
+            "income": 136,
+            "rate": 0.2
+          },
+          {
+            "hour": "13:00",
+            "orders": 5,
+            "cancel": 0,
+            "income": 139,
+            "rate": 0
+          },
+          {
+            "hour": "14:00",
+            "orders": 6,
+            "cancel": 0,
+            "income": 142,
+            "rate": 0
+          },
+          {
+            "hour": "15:00",
+            "orders": 2,
+            "cancel": 1,
+            "income": 145,
+            "rate": 0.2
+          },
+          {
+            "hour": "16:00",
+            "orders": 3,
+            "cancel": 0,
+            "income": 148,
+            "rate": 0
+          },
+          {
+            "hour": "17:00",
+            "orders": 4,
+            "cancel": 0,
+            "income": 151,
+            "rate": 0
+          },
+          {
+            "hour": "18:00",
+            "orders": 5,
+            "cancel": 1,
+            "income": 154,
+            "rate": 0.2
+          },
+          {
+            "hour": "19:00",
+            "orders": 6,
+            "cancel": 0,
+            "income": 157,
+            "rate": 0
+          },
+          {
+            "hour": "20:00",
+            "orders": 2,
+            "cancel": 0,
+            "income": 160,
+            "rate": 0
+          },
+          {
+            "hour": "21:00",
+            "orders": 3,
+            "cancel": 1,
+            "income": 163,
+            "rate": 0.2
+          },
+          {
+            "hour": "22:00",
+            "orders": 4,
+            "cancel": 0,
+            "income": 166,
+            "rate": 0
+          },
+          {
+            "hour": "23:00",
+            "orders": 5,
+            "cancel": 0,
+            "income": 169,
+            "rate": 0
+          }
+        ],
+        "yesterdayTotals": {
+          "orders": 20,
+          "cancel": 1,
+          "cancelRate": 0.05,
+          "projectedIncome": 200,
+          "source": "order-list-local"
+        },
+        "caliber": "近1小时取消 = 下单时间落在近 1 小时内的订单中已取消的",
+        "caliberYesterday": "昨日逐小时 = 昨日订单按 order_time 分桶（合成夹具）"
+      },
+      "taobao": {
+        "storeCount": 7,
+        "cityDist": {
+          "杭州": 4,
+          "成都": 3
+        },
+        "storeCountDetail": 1,
+        "detailWindow": "20260915~20260921",
+        "kpi": {
+          "order_cnt": 100,
+          "order_total_amt": "51875.24"
+        },
+        "kpiView": {
+          "window": "20260915~20260921",
+          "orderAmt": 51875.24,
+          "merchantIncome": null,
+          "orderCount": 100,
+          "invalidCount": null,
+          "invalidRate": 0,
+          "avgOrderAmt": null,
+          "payAmt": null,
+          "subsidyRate": null
+        },
+        "stores": [
+          {
+            "name": "闪购合成店",
+            "id": "t1",
+            "city": "杭州",
+            "supplier": "供应商",
+            "orders": 10,
+            "invalid": 1,
+            "rate": 10,
+            "amt": 1000,
+            "invalidAmt": 50,
+            "u": 1,
+            "del": 0,
+            "shop": 0,
+            "oth": 0,
+            "range": "20260915~20260921"
+          }
+        ]
+      },
+      "windows": {
+        "today": {
+          "label": "今日",
+          "projectedIncome": 120,
+          "orderCount": 12,
+          "validOrderCount": 11,
+          "cancelCount": 1,
+          "cancelRate": 8.33,
+          "avgOrderValue": 10.9,
+          "projectedIncomeSource": "todayOrderSummary（官方今日实时汇总）",
+          "promoCost": 35.4,
+          "promoShow": 858,
+          "promoClick": 34,
+          "promoRoi": 3.39,
+          "promoClickRate": null,
+          "promoUnavailable": false,
+          "promoLive": true,
+          "promoBudget": 16350,
+          "promoCostRate": 0.22,
+          "promoChainRatio": -34.9,
+          "promoNote": "今日消耗/曝光/点击来自推广首页实时接口（数据最长约 15 分钟延迟）",
+          "promoRoiNote": "推广 ROI = 预计收入 ÷ 推广消耗（本看板计算，非平台转化口径）",
+          "promoRatio": 29.5
+        },
+        "yesterday": {
+          "label": "昨日",
+          "projectedIncome": 200,
+          "orderCount": 20,
+          "validOrderCount": 19,
+          "cancelCount": 1,
+          "cancelRate": 5,
+          "avgOrderValue": 10.5,
+          "projectedIncomeSource": "fixTimeChart 昨日行 + order_cancel",
+          "promoCost": 114.96,
+          "promoShow": 5000,
+          "promoClick": 100,
+          "promoRoi": 1.74,
+          "promoClickRate": 2,
+          "promoUnavailable": false,
+          "promoLive": false,
+          "promoBudget": null,
+          "promoCostRate": null,
+          "promoChainRatio": null,
+          "promoNote": null,
+          "promoRoiNote": "推广 ROI = 预计收入 ÷ 推广消耗（本看板计算，非平台转化口径）",
+          "promoRatio": 57.48
+        },
+        "d7": {
+          "label": "近7天",
+          "projectedIncome": 929,
+          "orderCount": 124,
+          "validOrderCount": 124,
+          "cancelCount": 7,
+          "cancelRate": 5.65,
+          "avgOrderValue": 7.49,
+          "projectedIncomeSource": "逐日汇总",
+          "promoCost": 735.62,
+          "promoShow": 35000,
+          "promoClick": 700,
+          "promoRoi": 1.26,
+          "promoClickRate": 2,
+          "promoUnavailable": false,
+          "promoLive": false,
+          "promoBudget": null,
+          "promoCostRate": null,
+          "promoChainRatio": null,
+          "promoNote": null,
+          "promoRoiNote": "推广 ROI = 预计收入 ÷ 推广消耗（本看板计算，非平台转化口径）",
+          "promoRatio": 79.18
+        },
+        "d30": {
+          "label": "近30天",
+          "projectedIncome": 4215,
+          "orderCount": 531,
+          "validOrderCount": 531,
+          "cancelCount": 30,
+          "cancelRate": 5.65,
+          "avgOrderValue": 7.94,
+          "projectedIncomeSource": "逐日汇总",
+          "promoCost": 3000,
+          "promoShow": 150000,
+          "promoClick": 3000,
+          "promoRoi": 1.41,
+          "promoClickRate": 2,
+          "promoUnavailable": false,
+          "promoLive": false,
+          "promoBudget": null,
+          "promoCostRate": null,
+          "promoChainRatio": null,
+          "promoNote": null,
+          "promoRoiNote": "推广 ROI = 预计收入 ÷ 推广消耗（本看板计算，非平台转化口径）",
+          "promoRatio": 71.17
+        }
+      },
+      "kpiAll": {
+        "today": {
+          "label": "今日",
+          "projectedIncome": 120,
+          "orderCount": 12,
+          "validOrderCount": 11,
+          "cancelCount": 1,
+          "cancelRate": 8.33,
+          "avgOrderValue": 10.91,
+          "promoCost": 35.4,
+          "promoShow": 858,
+          "promoClick": 34,
+          "promoLive": true,
+          "promoUnavailable": false,
+          "promoRatio": 29.5,
+          "promoRoi": 3.39
+        },
+        "yesterday": {
+          "label": "昨日",
+          "projectedIncome": 200,
+          "orderCount": 20,
+          "validOrderCount": 19,
+          "cancelCount": 1,
+          "cancelRate": 5,
+          "avgOrderValue": 10.53,
+          "promoCost": 114.96,
+          "promoShow": 5000,
+          "promoClick": 100,
+          "promoLive": false,
+          "promoUnavailable": false,
+          "promoRatio": 57.48,
+          "promoRoi": 1.74
+        },
+        "d7": {
+          "label": "近7天",
+          "projectedIncome": 929,
+          "orderCount": 124,
+          "validOrderCount": 124,
+          "cancelCount": 7,
+          "cancelRate": 5.65,
+          "avgOrderValue": 7.49,
+          "promoCost": 735.62,
+          "promoShow": 35000,
+          "promoClick": 700,
+          "promoLive": false,
+          "promoUnavailable": false,
+          "promoRatio": 79.18,
+          "promoRoi": 1.26
+        },
+        "d30": {
+          "label": "近30天",
+          "projectedIncome": 4215,
+          "orderCount": 531,
+          "validOrderCount": 531,
+          "cancelCount": 30,
+          "cancelRate": 5.65,
+          "avgOrderValue": 7.94,
+          "promoCost": 3000,
+          "promoShow": 150000,
+          "promoClick": 3000,
+          "promoLive": false,
+          "promoUnavailable": false,
+          "promoRatio": 71.17,
+          "promoRoi": 1.41
+        }
+      },
+      "trendAll": {
+        "income": {
+          "hourly": {
+            "today": [
+              {
+                "hour": "09:00",
+                "value": 100
+              },
+              {
+                "hour": "10:00",
+                "value": 200
+              }
+            ],
+            "yesterday": [
+              {
+                "hour": "00:00",
+                "value": 100
+              },
+              {
+                "hour": "01:00",
+                "value": 103
+              },
+              {
+                "hour": "02:00",
+                "value": 106
+              },
+              {
+                "hour": "03:00",
+                "value": 109
+              },
+              {
+                "hour": "04:00",
+                "value": 112
+              },
+              {
+                "hour": "05:00",
+                "value": 115
+              },
+              {
+                "hour": "06:00",
+                "value": 118
+              },
+              {
+                "hour": "07:00",
+                "value": 121
+              },
+              {
+                "hour": "08:00",
+                "value": 124
+              },
+              {
+                "hour": "09:00",
+                "value": 127
+              },
+              {
+                "hour": "10:00",
+                "value": 130
+              },
+              {
+                "hour": "11:00",
+                "value": 133
+              },
+              {
+                "hour": "12:00",
+                "value": 136
+              },
+              {
+                "hour": "13:00",
+                "value": 139
+              },
+              {
+                "hour": "14:00",
+                "value": 142
+              },
+              {
+                "hour": "15:00",
+                "value": 145
+              },
+              {
+                "hour": "16:00",
+                "value": 148
+              },
+              {
+                "hour": "17:00",
+                "value": 151
+              },
+              {
+                "hour": "18:00",
+                "value": 154
+              },
+              {
+                "hour": "19:00",
+                "value": 157
+              },
+              {
+                "hour": "20:00",
+                "value": 160
+              },
+              {
+                "hour": "21:00",
+                "value": 163
+              },
+              {
+                "hour": "22:00",
+                "value": 166
+              },
+              {
+                "hour": "23:00",
+                "value": 169
+              }
+            ]
+          },
+          "daily": [
+            {
+              "date": "2026-09-01",
+              "value": 105
+            },
+            {
+              "date": "2026-09-02",
+              "value": 112
+            },
+            {
+              "date": "2026-09-03",
+              "value": 119
+            },
+            {
+              "date": "2026-09-04",
+              "value": 126
+            },
+            {
+              "date": "2026-09-05",
+              "value": 133
+            },
+            {
+              "date": "2026-09-06",
+              "value": 140
+            },
+            {
+              "date": "2026-09-07",
+              "value": 147
+            },
+            {
+              "date": "2026-09-08",
+              "value": 154
+            },
+            {
+              "date": "2026-09-09",
+              "value": 161
+            },
+            {
+              "date": "2026-09-10",
+              "value": 168
+            },
+            {
+              "date": "2026-09-11",
+              "value": 175
+            },
+            {
+              "date": "2026-09-12",
+              "value": 182
+            },
+            {
+              "date": "2026-09-13",
+              "value": 189
+            },
+            {
+              "date": "2026-09-14",
+              "value": 106
+            },
+            {
+              "date": "2026-09-15",
+              "value": 113
+            },
+            {
+              "date": "2026-09-16",
+              "value": 120
+            },
+            {
+              "date": "2026-09-17",
+              "value": 127
+            },
+            {
+              "date": "2026-09-18",
+              "value": 134
+            },
+            {
+              "date": "2026-09-19",
+              "value": 141
+            },
+            {
+              "date": "2026-09-20",
+              "value": 148
+            },
+            {
+              "date": "2026-09-21",
+              "value": 155
+            },
+            {
+              "date": "2026-09-22",
+              "value": 162
+            },
+            {
+              "date": "2026-09-23",
+              "value": 169
+            },
+            {
+              "date": "2026-09-24",
+              "value": 176
+            },
+            {
+              "date": "2026-09-25",
+              "value": 183
+            },
+            {
+              "date": "2026-09-26",
+              "value": 100
+            },
+            {
+              "date": "2026-09-27",
+              "value": 107
+            },
+            {
+              "date": "2026-09-28",
+              "value": 114
+            },
+            {
+              "date": "2026-09-29",
+              "value": 121
+            },
+            {
+              "date": "2026-09-30",
+              "value": 128
+            }
+          ]
+        },
+        "cancel": {
+          "hourly": {
+            "today": [
+              {
+                "hour": "09:00",
+                "cancel": 1,
+                "orders": 3
+              },
+              {
+                "hour": "10:00",
+                "cancel": 0,
+                "orders": 5
+              }
+            ],
+            "yesterday": [
+              {
+                "hour": "00:00",
+                "cancel": 1,
+                "orders": 2
+              },
+              {
+                "hour": "01:00",
+                "cancel": 0,
+                "orders": 3
+              },
+              {
+                "hour": "02:00",
+                "cancel": 0,
+                "orders": 4
+              },
+              {
+                "hour": "03:00",
+                "cancel": 1,
+                "orders": 5
+              },
+              {
+                "hour": "04:00",
+                "cancel": 0,
+                "orders": 6
+              },
+              {
+                "hour": "05:00",
+                "cancel": 0,
+                "orders": 2
+              },
+              {
+                "hour": "06:00",
+                "cancel": 1,
+                "orders": 3
+              },
+              {
+                "hour": "07:00",
+                "cancel": 0,
+                "orders": 4
+              },
+              {
+                "hour": "08:00",
+                "cancel": 0,
+                "orders": 5
+              },
+              {
+                "hour": "09:00",
+                "cancel": 1,
+                "orders": 6
+              },
+              {
+                "hour": "10:00",
+                "cancel": 0,
+                "orders": 2
+              },
+              {
+                "hour": "11:00",
+                "cancel": 0,
+                "orders": 3
+              },
+              {
+                "hour": "12:00",
+                "cancel": 1,
+                "orders": 4
+              },
+              {
+                "hour": "13:00",
+                "cancel": 0,
+                "orders": 5
+              },
+              {
+                "hour": "14:00",
+                "cancel": 0,
+                "orders": 6
+              },
+              {
+                "hour": "15:00",
+                "cancel": 1,
+                "orders": 2
+              },
+              {
+                "hour": "16:00",
+                "cancel": 0,
+                "orders": 3
+              },
+              {
+                "hour": "17:00",
+                "cancel": 0,
+                "orders": 4
+              },
+              {
+                "hour": "18:00",
+                "cancel": 1,
+                "orders": 5
+              },
+              {
+                "hour": "19:00",
+                "cancel": 0,
+                "orders": 6
+              },
+              {
+                "hour": "20:00",
+                "cancel": 0,
+                "orders": 2
+              },
+              {
+                "hour": "21:00",
+                "cancel": 1,
+                "orders": 3
+              },
+              {
+                "hour": "22:00",
+                "cancel": 0,
+                "orders": 4
+              },
+              {
+                "hour": "23:00",
+                "cancel": 0,
+                "orders": 5
+              }
+            ]
+          },
+          "daily": [
+            {
+              "date": "2026-09-01",
+              "cancel": 2,
+              "orders": 15
+            },
+            {
+              "date": "2026-09-02",
+              "cancel": 0,
+              "orders": 18
+            },
+            {
+              "date": "2026-09-03",
+              "cancel": 1,
+              "orders": 21
+            },
+            {
+              "date": "2026-09-04",
+              "cancel": 2,
+              "orders": 24
+            },
+            {
+              "date": "2026-09-05",
+              "cancel": 0,
+              "orders": 10
+            },
+            {
+              "date": "2026-09-06",
+              "cancel": 1,
+              "orders": 13
+            },
+            {
+              "date": "2026-09-07",
+              "cancel": 2,
+              "orders": 16
+            },
+            {
+              "date": "2026-09-08",
+              "cancel": 0,
+              "orders": 19
+            },
+            {
+              "date": "2026-09-09",
+              "cancel": 1,
+              "orders": 22
+            },
+            {
+              "date": "2026-09-10",
+              "cancel": 2,
+              "orders": 25
+            },
+            {
+              "date": "2026-09-11",
+              "cancel": 0,
+              "orders": 11
+            },
+            {
+              "date": "2026-09-12",
+              "cancel": 1,
+              "orders": 14
+            },
+            {
+              "date": "2026-09-13",
+              "cancel": 2,
+              "orders": 17
+            },
+            {
+              "date": "2026-09-14",
+              "cancel": 0,
+              "orders": 20
+            },
+            {
+              "date": "2026-09-15",
+              "cancel": 1,
+              "orders": 23
+            },
+            {
+              "date": "2026-09-16",
+              "cancel": 2,
+              "orders": 26
+            },
+            {
+              "date": "2026-09-17",
+              "cancel": 0,
+              "orders": 12
+            },
+            {
+              "date": "2026-09-18",
+              "cancel": 1,
+              "orders": 15
+            },
+            {
+              "date": "2026-09-19",
+              "cancel": 2,
+              "orders": 18
+            },
+            {
+              "date": "2026-09-20",
+              "cancel": 0,
+              "orders": 21
+            },
+            {
+              "date": "2026-09-21",
+              "cancel": 1,
+              "orders": 24
+            },
+            {
+              "date": "2026-09-22",
+              "cancel": 2,
+              "orders": 10
+            },
+            {
+              "date": "2026-09-23",
+              "cancel": 0,
+              "orders": 13
+            },
+            {
+              "date": "2026-09-24",
+              "cancel": 1,
+              "orders": 16
+            },
+            {
+              "date": "2026-09-25",
+              "cancel": 2,
+              "orders": 19
+            },
+            {
+              "date": "2026-09-26",
+              "cancel": 0,
+              "orders": 22
+            },
+            {
+              "date": "2026-09-27",
+              "cancel": 1,
+              "orders": 25
+            },
+            {
+              "date": "2026-09-28",
+              "cancel": 2,
+              "orders": 11
+            },
+            {
+              "date": "2026-09-29",
+              "cancel": 0,
+              "orders": 14
+            },
+            {
+              "date": "2026-09-30",
+              "cancel": 1,
+              "orders": 17
+            }
+          ]
+        },
+        "promo": {
+          "daily": [
+            {
+              "date": "2026-09-01",
+              "cost": 100,
+              "income": 105
+            },
+            {
+              "date": "2026-09-02",
+              "cost": 100.07,
+              "income": 112
+            },
+            {
+              "date": "2026-09-03",
+              "cost": 100.14,
+              "income": 119
+            },
+            {
+              "date": "2026-09-04",
+              "cost": 100.21,
+              "income": 126
+            },
+            {
+              "date": "2026-09-05",
+              "cost": 100.28,
+              "income": 133
+            },
+            {
+              "date": "2026-09-06",
+              "cost": 100.35,
+              "income": 140
+            },
+            {
+              "date": "2026-09-07",
+              "cost": 100.42,
+              "income": 147
+            },
+            {
+              "date": "2026-09-08",
+              "cost": 100.49,
+              "income": 154
+            },
+            {
+              "date": "2026-09-09",
+              "cost": 100.56,
+              "income": 161
+            },
+            {
+              "date": "2026-09-10",
+              "cost": 100.63,
+              "income": 168
+            },
+            {
+              "date": "2026-09-11",
+              "cost": 100.7,
+              "income": 175
+            },
+            {
+              "date": "2026-09-12",
+              "cost": 100.77,
+              "income": 182
+            },
+            {
+              "date": "2026-09-13",
+              "cost": 100.84,
+              "income": 189
+            },
+            {
+              "date": "2026-09-14",
+              "cost": 100.91,
+              "income": 106
+            },
+            {
+              "date": "2026-09-15",
+              "cost": 100.98,
+              "income": 113
+            },
+            {
+              "date": "2026-09-16",
+              "cost": 101.05,
+              "income": 120
+            },
+            {
+              "date": "2026-09-17",
+              "cost": 101.12,
+              "income": 127
+            },
+            {
+              "date": "2026-09-18",
+              "cost": 101.19,
+              "income": 134
+            },
+            {
+              "date": "2026-09-19",
+              "cost": 101.26,
+              "income": 141
+            },
+            {
+              "date": "2026-09-20",
+              "cost": 101.33,
+              "income": 148
+            },
+            {
+              "date": "2026-09-21",
+              "cost": 101.4,
+              "income": 155
+            },
+            {
+              "date": "2026-09-22",
+              "cost": 101.47,
+              "income": 162
+            },
+            {
+              "date": "2026-09-23",
+              "cost": 101.54,
+              "income": 169
+            },
+            {
+              "date": "2026-09-24",
+              "cost": 101.61,
+              "income": 176
+            },
+            {
+              "date": "2026-09-25",
+              "cost": 101.68,
+              "income": 183
+            },
+            {
+              "date": "2026-09-26",
+              "cost": 101.75,
+              "income": 100
+            },
+            {
+              "date": "2026-09-27",
+              "cost": 101.82,
+              "income": 107
+            },
+            {
+              "date": "2026-09-28",
+              "cost": 101.89,
+              "income": 114
+            },
+            {
+              "date": "2026-09-29",
+              "cost": 101.96,
+              "income": 121
+            },
+            {
+              "date": "2026-09-30",
+              "cost": 102.03,
+              "income": 128
+            }
+          ],
+          "hourly": {
+            "today": [
+              {
+                "hour": "00:00",
+                "cost": 1,
+                "income": 0
+              },
+              {
+                "hour": "01:00",
+                "cost": 2,
+                "income": 0
+              },
+              {
+                "hour": "02:00",
+                "cost": 3,
+                "income": 0
+              },
+              {
+                "hour": "03:00",
+                "cost": 4,
+                "income": 0
+              },
+              {
+                "hour": "04:00",
+                "cost": 1,
+                "income": 0
+              },
+              {
+                "hour": "05:00",
+                "cost": 2,
+                "income": 0
+              },
+              {
+                "hour": "06:00",
+                "cost": 3,
+                "income": 0
+              },
+              {
+                "hour": "07:00",
+                "cost": 4,
+                "income": 0
+              },
+              {
+                "hour": "08:00",
+                "cost": 1,
+                "income": 0
+              },
+              {
+                "hour": "09:00",
+                "cost": 2,
+                "income": 100
+              },
+              {
+                "hour": "10:00",
+                "cost": 3,
+                "income": 200
+              },
+              {
+                "hour": "11:00",
+                "cost": 4,
+                "income": 0
+              },
+              {
+                "hour": "12:00",
+                "cost": 1,
+                "income": 0
+              },
+              {
+                "hour": "13:00",
+                "cost": 2,
+                "income": 0
+              },
+              {
+                "hour": "14:00",
+                "cost": 3,
+                "income": 0
+              },
+              {
+                "hour": "15:00",
+                "cost": 4,
+                "income": 0
+              },
+              {
+                "hour": "16:00",
+                "cost": 1,
+                "income": 0
+              },
+              {
+                "hour": "17:00",
+                "cost": 2,
+                "income": 0
+              },
+              {
+                "hour": "18:00",
+                "cost": 3,
+                "income": 0
+              },
+              {
+                "hour": "19:00",
+                "cost": 4,
+                "income": 0
+              },
+              {
+                "hour": "20:00",
+                "cost": 1,
+                "income": 0
+              },
+              {
+                "hour": "21:00",
+                "cost": 2,
+                "income": 0
+              },
+              {
+                "hour": "22:00",
+                "cost": 3,
+                "income": 0
+              },
+              {
+                "hour": "23:00",
+                "cost": 4,
+                "income": 0
+              }
+            ],
+            "yesterday": []
+          }
+        },
+        "expo": {
+          "daily": [
+            {
+              "date": "2026-09-01",
+              "uv": 900,
+              "pv": 2700
+            },
+            {
+              "date": "2026-09-02",
+              "uv": 901,
+              "pv": 2703
+            },
+            {
+              "date": "2026-09-03",
+              "uv": 902,
+              "pv": 2706
+            },
+            {
+              "date": "2026-09-04",
+              "uv": 903,
+              "pv": 2709
+            },
+            {
+              "date": "2026-09-05",
+              "uv": 904,
+              "pv": 2712
+            },
+            {
+              "date": "2026-09-06",
+              "uv": 905,
+              "pv": 2715
+            },
+            {
+              "date": "2026-09-07",
+              "uv": 906,
+              "pv": 2718
+            },
+            {
+              "date": "2026-09-08",
+              "uv": 907,
+              "pv": 2721
+            },
+            {
+              "date": "2026-09-09",
+              "uv": 908,
+              "pv": 2724
+            },
+            {
+              "date": "2026-09-10",
+              "uv": 909,
+              "pv": 2727
+            },
+            {
+              "date": "2026-09-11",
+              "uv": 910,
+              "pv": 2730
+            },
+            {
+              "date": "2026-09-12",
+              "uv": 911,
+              "pv": 2733
+            },
+            {
+              "date": "2026-09-13",
+              "uv": 912,
+              "pv": 2736
+            },
+            {
+              "date": "2026-09-14",
+              "uv": 913,
+              "pv": 2739
+            },
+            {
+              "date": "2026-09-15",
+              "uv": 914,
+              "pv": 2742
+            },
+            {
+              "date": "2026-09-16",
+              "uv": 915,
+              "pv": 2745
+            },
+            {
+              "date": "2026-09-17",
+              "uv": 916,
+              "pv": 2748
+            },
+            {
+              "date": "2026-09-18",
+              "uv": 917,
+              "pv": 2751
+            },
+            {
+              "date": "2026-09-19",
+              "uv": 918,
+              "pv": 2754
+            },
+            {
+              "date": "2026-09-20",
+              "uv": 919,
+              "pv": 2757
+            },
+            {
+              "date": "2026-09-21",
+              "uv": 920,
+              "pv": 2760
+            },
+            {
+              "date": "2026-09-22",
+              "uv": 921,
+              "pv": 2763
+            },
+            {
+              "date": "2026-09-23",
+              "uv": 922,
+              "pv": 2766
+            },
+            {
+              "date": "2026-09-24",
+              "uv": 923,
+              "pv": 2769
+            },
+            {
+              "date": "2026-09-25",
+              "uv": 924,
+              "pv": 2772
+            },
+            {
+              "date": "2026-09-26",
+              "uv": 925,
+              "pv": 2775
+            },
+            {
+              "date": "2026-09-27",
+              "uv": 926,
+              "pv": 2778
+            },
+            {
+              "date": "2026-09-28",
+              "uv": 927,
+              "pv": 2781
+            },
+            {
+              "date": "2026-09-29",
+              "uv": 928,
+              "pv": 2784
+            },
+            {
+              "date": "2026-09-30",
+              "uv": 1000,
+              "pv": 3000
+            }
+          ],
+          "flow": null
+        }
+      },
+      "highCancelD7": [
+        {
+          "poiId": "p1",
+          "poiName": "合成店一",
+          "orders": 30,
+          "cancel": 6,
+          "income": 300,
+          "rate": 0.2
+        }
+      ],
+      "highCancelD30": [
+        {
+          "poiId": "p1",
+          "poiName": "合成店一",
+          "orders": 120,
+          "cancel": 12,
+          "income": 1200,
+          "rate": 0.1
+        }
+      ],
+      "storeChart": [
+        {
+          "name": "营业中",
+          "value": 3
+        },
+        {
+          "name": "停业中",
+          "value": 1
+        }
+      ]
+    }
+  },
+  "notes": [
+    "**收入口径**：全看板收入一律使用「**预计收入**」= 平台 `manageHome/core` 的 `multiProjectedIncome`（窗口）/ `fixTimeChart`（逐日）。该口径已与平台官方 `settleIncome` 逐单核对，差额 0.00。**不是成交额 `multiDealAmount`**。",
+    "**推广占比** = 推广消耗 ÷ 预计收入。推广消耗取自美团营销平台：**历史窗口**用 T+1 报表（金额单位原为「分」，已 ÷100）；**今日**用推广首页的**实时接口**（含今日/昨日分时，数据最长约 15 分钟延迟）。**推广 ROI** = 推广 ROI = 预计收入 ÷ 推广消耗（本看板计算，非平台转化口径）；今日/昨日分时图的小时 ROI = 逐单分时预计收入 ÷ 实时分时消耗（按小时对齐现算）。",
+    "**项目隔离**：品牌A与品牌B是两个独立项目，各有独立登录态与门店体系，**看板不做汇总、不跨项目相加**。",
+    "**近1小时取消**：= 下单时间落在近 1 小时内的订单中状态为已取消的。平台无「取消时刻」字段，所以这**不是**「近1小时内发生的取消」，两者在取消有延迟时会不同。",
+    "**跨平台口径不可加**：美团「已取消」= orderStatus 9（仅取消）；闪购「流失订单」= 取消 + 全款退，定义更宽。两个平台的取消/流失**不能相加**。",
+    "**平台维度**：看板可按 全部平台 / 美团 / 闪购 切换。⭐ R21/R22（2026-09-24 经营者指示）：**「全部平台」= 美团 + 闪购 合计** —— KPI 七卡与四个趋势板块均按合计口径：取消单 = 美团取消单 + 闪购流失单；推广 = 美团推广 + 闪购推广（闪购侧分品牌：品牌A=o2o 全站推广、品牌B=斗金）；ROI = 1 ÷ 推广占比；曝光人数 = 美团 + 闪购（曝光次数暂仅美团——闪购无逐日 PV）。闪购视图 = 闪购口径，美团视图 = 美团口径，两视图下仍不可相加。",
+    "**品牌A 数据缺口**：闪购营业统计缺失（未跑 fetch-taobao-stats.mjs）—— 平台切换器的闪购视图会是空的；闪购推广数据缺失（未跑 fetch-taobao-promo.mjs）—— 闪购视图的推广板块将如实降级。",
+    "**品牌B 数据缺口**：闪购营业统计缺失（未跑 fetch-taobao-stats.mjs）—— 平台切换器的闪购视图会是空的；闪购推广数据缺失（未跑 fetch-taobao-promo.mjs）—— 闪购视图的推广板块将如实降级。"
+  ],
+  "caliber": {
+    "income": {
+      "primaryField": "multiProjectedIncome",
+      "dailyField": "fixTimeChart",
+      "mustNotUse": [
+        "multiDealAmount"
+      ],
+      "algoBySource": {
+        "platform-aggregate": "平台 `manageHome/core` 的 `multiProjectedIncome`（窗口）/ `fixTimeChart`（逐日）",
+        "orderlist-legacy": "Σ 逐单 `finalSettlementAmount`（`orderStatus ≠ 9`，即剔除已取消）"
+      },
+      "algoUnknown": "来源未标记（既非平台聚合亦非逐单，需复查取数脚本）",
+      "sourceByProject": {
+        "quanyi": "platform-aggregate",
+        "yifeng": "platform-aggregate"
+      },
+      "shortBySource": {
+        "platform-aggregate": "平台 multiProjectedIncome（窗口聚合）"
+      }
+    },
+    "promo": {
+      "formulaText": "推广消耗 ÷ 预计收入",
+      "denominator": "projectedIncome",
+      "mustNotUse": [
+        "convertOrderAmount"
+      ],
+      "costDivisor": 100,
+      "unavailableNote": "今日推广报表次日生成，本窗口取不到数，显示 —",
+      "liveShort": "推广首页实时 ≤15 分钟延迟",
+      "liveNote": "今日消耗/曝光/点击来自推广首页实时接口（数据最长约 15 分钟延迟）",
+      "roiNote": "推广 ROI = 预计收入 ÷ 推广消耗（本看板计算，非平台转化口径）",
+      "t1Note": "推广报表为 T+1，今日数据次日才有"
+    },
+    "window": {
+      "excludeToday": true,
+      "ruleText": "`last_N_days` 截止昨天、**不含今天**",
+      "todayRuleText": "今日单独走 `todayOrderSummary`"
+    },
+    "cancelRate": {
+      "BOUNDARY_UNIT": "decimal",
+      "BOUNDARY_RANGE": [
+        0,
+        1
+      ],
+      "VM_WINDOW_UNIT": "percent",
+      "VM_WINDOW_RANGE": [
+        0,
+        100
+      ],
+      "VM_BYPOI_UNIT": "decimal",
+      "VM_BYPOI_RANGE": [
+        0,
+        1
+      ],
+      "NOTE": "⚠️ 同一份 VM 里 `windows[].cancelRate` 是百分数，而 `income.byPoi*[].rate` 是小数 —— 消费方必须按字段名区分，模板里 `×100` 只许出现在 `rate` 上。"
+    },
+    "exposure": {
+      "mode": "platform-total",
+      "api": "flowAnalysisV5/recentDays/flowTransformation",
+      "chartApi": "flowTransformationChart",
+      "mustNotUse": [
+        "flowPoiExposureRankingV2"
+      ],
+      "latestDayIsT1": true,
+      "label": "最新日",
+      "samplesByProject": {
+        "quanyi": {
+          "date": "2026-09-21",
+          "platformPv": 18280,
+          "byPoiSumPv": 2526
+        },
+        "yifeng": {
+          "date": "2026-09-21",
+          "platformPv": 17395,
+          "byPoiSumPv": null
+        }
+      },
+      "textByProject": {
+        "quanyi": "口径 = 流量分析「曝光次数(PV) / 曝光人数(UV)」的<b>平台总计</b>，不是各门店求和。（品牌A 2026-09-21 实测两者差 7.2 倍：平台 18,280 vs 逐店求和 2,526，属不同度量，逐店口径已撤下。）",
+        "yifeng": "口径 = 流量分析「曝光次数(PV) / 曝光人数(UV)」的<b>平台总计</b>，不是各门店求和。（品牌B 2026-09-21 平台 PV 17,395；逐店求和是另一个度量，口径已撤下。）"
+      }
+    },
+    "isolation": {
+      "PROJECTS_ARE_SEPARATE": true,
+      "PLATFORMS_NOT_ADDITIVE": true,
+      "PROJECT_NOTE": "**项目隔离**：品牌A与品牌B是两个独立项目，各有独立登录态与门店体系，**看板不做汇总、不跨项目相加**。",
+      "PLATFORM_NOTE": "**跨平台口径不可加**：美团「已取消」= orderStatus 9（仅取消）；闪购「流失订单」= 取消 + 全款退，定义更宽。两个平台的取消/流失**不能相加**。",
+      "ANOMALY_NOTE": "**异常未营业**：口径为「台账未标注未营业原因 且 线上实际营业状态为未营业」。美团侧用门店营业状态接口的真实状态；**闪购侧门店节点接口不返回营业状态**，若某条标注来源为「台账」，那是台账人工列，不等于线上实际状态，需人工复核。",
+      "RECENT_HOUR_NOTE": "**近1小时取消**：= 下单时间落在近 1 小时内的订单中状态为已取消的。平台无「取消时刻」字段，所以这**不是**「近1小时内发生的取消」，两者在取消有延迟时会不同。"
+    },
+    "windowDefs": [
+      {
+        "key": "today",
+        "label": "今日"
+      },
+      {
+        "key": "yesterday",
+        "label": "昨日"
+      },
+      {
+        "key": "d7",
+        "label": "近7天"
+      },
+      {
+        "key": "d30",
+        "label": "近30天"
+      }
+    ],
+    "kaLabelToKey": {
+      "今日": "today",
+      "昨日": "yesterday",
+      "近7天": "d7",
+      "近30天": "d30"
+    },
+    "windowSeries": {
+      "today": {
+        "tag": "今日 · 逐小时",
+        "dim": "hour"
+      },
+      "yesterday": {
+        "tag": "昨日 · 逐小时",
+        "dim": "hour"
+      },
+      "d7": {
+        "tag": "近 7 天 · 逐日",
+        "dim": "day"
+      },
+      "d30": {
+        "tag": "近 30 天 · 逐日",
+        "dim": "day"
+      }
+    },
+    "dailyOnlyNote": "平台为 T+1 日粒度，无小时数据 —— 曲线为最近 7 天逐日，虚线标出所选日。",
+    "platformDefs": [
+      {
+        "key": "all",
+        "label": "全部平台"
+      },
+      {
+        "key": "meituan",
+        "label": "美团"
+      },
+      {
+        "key": "shangou",
+        "label": "闪购"
+      }
+    ],
+    "platformDefault": "all",
+    "platformNotes": {
+      "general": "**平台维度**：看板可按 全部平台 / 美团 / 闪购 切换。⭐ R21/R22（2026-09-24 经营者指示）：**「全部平台」= 美团 + 闪购 合计** —— KPI 七卡与四个趋势板块均按合计口径：取消单 = 美团取消单 + 闪购流失单；推广 = 美团推广 + 闪购推广（闪购侧分品牌：品牌A=o2o 全站推广、品牌B=斗金）；ROI = 1 ÷ 推广占比；曝光人数 = 美团 + 闪购（曝光次数暂仅美团——闪购无逐日 PV）。闪购视图 = 闪购口径，美团视图 = 美团口径，两视图下仍不可相加。",
+      "allNoSum": "图中为**美团**曲线。闪购无逐日数据、且两平台口径不同**不可叠加**，故此图不合并闪购。",
+      "shangouNoSeries": "闪购后台未提供逐日 / 逐小时时间序列（现有数据仅一份「近 7 天」窗口聚合），故本板块无法画趋势曲线。",
+      "shangouNoPromo": "闪购推广数据未取到。取数走斗金 BP 通路（fetch-taobao-promo.mjs，纯 Node），需要调试浏览器 profile 里已有 .ele.me 域 cookie（先在调试浏览器里开过闪购后台才有）。",
+      "shangouNoExposure": "闪购曝光 / 流量分析接口本项目未接入（MDA 有流量接口，但尚未取数标定）。",
+      "tbPromo": "**闪购推广口径**：数据来自壳内「全站推广」页（eleAllSiteChain，页面原生请求拦截），**全部形式的推广消耗**；⭐ R15（2026-09-24）：品牌A = **品牌Ao2o 供应商（单账号）**，镜像子账号（镜像子账号）不再求和（其本身无投放）；品牌B = 单账号。今日为 T+0 实时；近7天/近30天到昨天。⭐ R16（2026-09-24）：闪购 ROI 改**本看板现算**，⭐ R19（同日）：**两品牌口径不同，必须区分** —— 品牌A ROI = **「眼镜店」总账号预计收入 ÷ 「品牌A（o2o）」全站推广消耗**；品牌B ROI = **「品牌B」预计收入 ÷ 「品牌B」斗金推广消耗**（收入均以登录节点身份取自 MDA ② 族；取数失败不展示 ROI）。⛔ 与美团推广口径不同，**不可相加**。",
+      "tbPromoShort": "口径：品牌A=品牌Ao2o全站推广；品牌B=斗金推广；ROI（本看板算）品牌A=眼镜店收入÷o2o消耗、品牌B=品牌B收入÷斗金消耗"
+    },
+    "tbKpi": {
+      "incomeShort": "闪购 MDA 预计收入（今日 T+0；品牌A=o2o+镜像整树，品牌B=单账号）",
+      "orderFoot": "有效订单（闪购口径）",
+      "avgFoot": "预计收入 ÷ 有效订单",
+      "cancelFootSuffix": "（流失 ≠ 美团取消单）",
+      "promoLiveShort": "推广 T+0 实时",
+      "noPromoNote": "该窗口无闪购推广数据",
+      "promoRatioFoot": "推广消耗 ÷ 预计收入（闪购口径，与美团不同，不可相加）",
+      "roiFoot": "预计收入 ÷ 推广消耗（品牌A分母=o2o 全站推广；品牌B分母=斗金推广）",
+      "noDataNote": "闪购该窗口无 KPI 数据（未取到 MDA / 推广数据）"
+    },
+    "kpiAll": {
+      "incomeShort": "美团预计收入 + 闪购预计收入 合计",
+      "orderFoot": "美团有效订单数 + 闪购有效订单",
+      "cancelFoot": "（美团取消单 + 闪购流失单）÷ 合计订单数",
+      "avgFoot": "（美团+闪购预计收入）÷（美团+闪购有效订单）",
+      "promoCostFoot": "美团推广 + 闪购推广（品牌A=o2o 全站推广；品牌B=斗金）",
+      "promoRatioFoot": "推广消耗合计 ÷ 预计收入合计",
+      "roiFoot": "1 ÷ 推广占比（= 预计收入合计 ÷ 推广消耗合计）",
+      "noDataNote": "该窗口无合计 KPI 数据"
+    },
+    "trendAll": {
+      "income": "全部平台 = 美团 + 闪购 预计收入合计（按时间对齐求和）",
+      "cancel": "取消单 = 美团取消 + 闪购流失；取消率 = 合计取消 ÷ 合计订单",
+      "promoHourTodayNote": "分时 = 美团实时分时 + 闪购今日诊断分时（按小时对齐求和）",
+      "promoHourNote": "全部平台无合计分时（闪购缺昨日分时消耗），按最近 7 天逐日展示",
+      "promo": "推广消耗 = 美团 + 闪购（品牌A=o2o 全站推广；品牌B=斗金）",
+      "roi": "ROI = 收入合计 ÷ 消耗合计",
+      "expo": "曝光人数 = 美团 + 闪购合计；曝光次数仅美团（闪购无逐日 PV）"
+    }
+  },
+  "thresholds": {
+    "cancelRateDanger": 10,
+    "cancelCardBad": 10,
+    "cancelRateAlertFactor": 2.5,
+    "cancelRateAlertFloor": 8,
+    "promoRatioWarn": 20,
+    "poiCancelRateBad": 0.2,
+    "storeCancelRateBad": 20
+  },
+  "selfCheckSpecs": [
+    {
+      "id": "vm-has-no-undefined",
+      "label": "VM 内无 undefined/NaN 字面量（全量扫描）"
+    },
+    {
+      "id": "income-selfcheck-diff-zero",
+      "label": "预计收入自校验差 = 0（对齐官方 settleIncome）"
+    },
+    {
+      "id": "exposure-last-eq-window",
+      "label": "曝光曲线末点 == 最新日窗口值（UV 与 PV）"
+    },
+    {
+      "id": "exposure-latest-is-yesterday",
+      "label": "曝光「最新日」≤ 昨天（T+1，不含今天）"
+    },
+    {
+      "id": "window-cancelrate-range",
+      "label": "窗口 cancelRate ∈ [0,100] 且 ≈ cancelCount/orderCount"
+    },
+    {
+      "id": "poi-rate-decimal",
+      "label": "逐店 rate ∈ [0,1]（边界量纲为小数）"
+    },
+    {
+      "id": "promo-ratio-denominator",
+      "label": "推广占比 ≈ 推广消耗 ÷ 预计收入 × 100"
+    },
+    {
+      "id": "window-end-excludes-today",
+      "label": "d7/d30 窗口 end ≤ 昨天（last_N_days 不含今天）"
+    },
+    {
+      "id": "projects-isolated",
+      "label": "项目隔离：两项目独立、无跨项目合计字段"
+    },
+    {
+      "id": "platforms-not-additive",
+      "label": "平台不可加：无把美团与闪购相加的字段"
+    },
+    {
+      "id": "exposure-caliber-per-project",
+      "label": "曝光口径文案按项目给数（不串项目）"
+    }
+  ],
+  "selfCheck": [
+    {
+      "id": "vm-has-no-undefined",
+      "label": "VM 内无 undefined/NaN 字面量（全量扫描）",
+      "ok": true,
+      "detail": "全量扫描 66855 字符"
+    },
+    {
+      "id": "income-selfcheck-diff-zero",
+      "label": "预计收入自校验差 = 0（对齐官方 settleIncome）",
+      "ok": true,
+      "detail": "[品牌A] projectedIncomeDiff=0"
+    },
+    {
+      "id": "exposure-last-eq-window",
+      "label": "曝光曲线末点 == 最新日窗口值（UV 与 PV）",
+      "ok": true,
+      "detail": "[品牌A] 曲线 2026-09-30 UV 1000/PV 3000 vs 窗口 UV 1000/PV 3000"
+    },
+    {
+      "id": "exposure-latest-is-yesterday",
+      "label": "曝光「最新日」≤ 昨天（T+1，不含今天）",
+      "ok": true,
+      "detail": "[品牌A] 最新日 2026-09-21，昨天 2026-09-23"
+    },
+    {
+      "id": "window-cancelrate-range",
+      "label": "窗口 cancelRate ∈ [0,100] 且 ≈ cancelCount/orderCount",
+      "ok": true,
+      "detail": "[品牌A] 全部合规"
+    },
+    {
+      "id": "poi-rate-decimal",
+      "label": "逐店 rate ∈ [0,1]（边界量纲为小数）",
+      "ok": true,
+      "detail": "[品牌A] 3 条中越界 0 条"
+    },
+    {
+      "id": "promo-ratio-denominator",
+      "label": "推广占比 ≈ 推广消耗 ÷ 预计收入 × 100",
+      "ok": true,
+      "detail": "[品牌A] 全部合规"
+    },
+    {
+      "id": "window-end-excludes-today",
+      "label": "d7/d30 窗口 end ≤ 昨天（last_N_days 不含今天）",
+      "ok": false,
+      "detail": "[品牌A] 近7天 end=2026-09-30；近30天 end=2026-09-30"
+    },
+    {
+      "id": "income-selfcheck-diff-zero",
+      "label": "预计收入自校验差 = 0（对齐官方 settleIncome）",
+      "ok": true,
+      "detail": "[品牌B] projectedIncomeDiff=0"
+    },
+    {
+      "id": "exposure-last-eq-window",
+      "label": "曝光曲线末点 == 最新日窗口值（UV 与 PV）",
+      "ok": true,
+      "detail": "[品牌B] 曲线 2026-09-30 UV 1000/PV 3000 vs 窗口 UV 1000/PV 3000"
+    },
+    {
+      "id": "exposure-latest-is-yesterday",
+      "label": "曝光「最新日」≤ 昨天（T+1，不含今天）",
+      "ok": true,
+      "detail": "[品牌B] 最新日 2026-09-21，昨天 2026-09-23"
+    },
+    {
+      "id": "window-cancelrate-range",
+      "label": "窗口 cancelRate ∈ [0,100] 且 ≈ cancelCount/orderCount",
+      "ok": true,
+      "detail": "[品牌B] 全部合规"
+    },
+    {
+      "id": "poi-rate-decimal",
+      "label": "逐店 rate ∈ [0,1]（边界量纲为小数）",
+      "ok": true,
+      "detail": "[品牌B] 3 条中越界 0 条"
+    },
+    {
+      "id": "promo-ratio-denominator",
+      "label": "推广占比 ≈ 推广消耗 ÷ 预计收入 × 100",
+      "ok": true,
+      "detail": "[品牌B] 全部合规"
+    },
+    {
+      "id": "window-end-excludes-today",
+      "label": "d7/d30 窗口 end ≤ 昨天（last_N_days 不含今天）",
+      "ok": false,
+      "detail": "[品牌B] 近7天 end=2026-09-30；近30天 end=2026-09-30"
+    },
+    {
+      "id": "projects-isolated",
+      "label": "项目隔离：两项目独立、无跨项目合计字段",
+      "ok": true,
+      "detail": "projectOrder=[\"quanyi\",\"yifeng\"]，无跨项目合计顶层键"
+    },
+    {
+      "id": "platforms-not-additive",
+      "label": "平台不可加：无把美团与闪购相加的字段",
+      "ok": true,
+      "detail": "未出现跨平台合计字段"
+    },
+    {
+      "id": "exposure-caliber-per-project",
+      "label": "曝光口径文案按项目给数（不串项目）",
+      "ok": true,
+      "detail": "样本项目 quanyi, yifeng"
+    }
+  ]
+}

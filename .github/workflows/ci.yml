@@ -1,0 +1,167 @@
+name: ci
+
+# 参考 dsh-context-guard 的 ci.yml（test job + 守卫闸），按本仓库（Node 看板 + Python 广播）改写：
+#   · 保留：CONCURRENCY、contents: read、fail-fast: false 的版本矩阵、
+#     「检查后工作树必须干净」「不许把备份/产物带进仓库」两道小闸。
+#   · 去掉：npm publish job（本仓库不是 npm 包，private: true）。
+#     发布走 GitHub Release + tag，见文件末尾 release job。
+#   · 新增：敏感内容守卫闸（tools/guard/scan.mjs）与 Python 语法检查。
+
+on:
+  push:
+    branches: [main]
+    # ⛔ 必须同时监听 tag：否则「只推 tag」不触发 workflow，release job 永远等不到。
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+# CI 只需要读代码；写权限只在 release job 单独给。
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ── 闸门 0：敏感内容（真实店名 / 人名 / secret / cookie / 本机路径 / 手机号）──
+  # 必须在 test 之前跑：内容不合规就没有「跑测试」的意义。
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # 扫描 git 索引里的文件；历史遗留命中在 tools/guard/baseline.json 里登记放行，
+      # 本次新增命中一律失败。规则表：tools/guard/patterns.json
+      - name: sensitive content guard
+        run: node tools/guard/scan.mjs
+
+      # 反例测试：守卫自己必须能拦住——植入一条假 secret 必须非零退出。
+      # 注意：扫描对象是 **git 索引**，所以植入后要 `git add -f` 才进得来。
+      # （没有这条，守卫「永远绿」也可能是规则写错了。）
+      - name: guard self-test (must fail on a planted secret)
+        run: |
+          printf 'export const k = "ghp_0123456789abcdefghijABCDEFGHIJ012345";\n' > _guard_selftest.mjs
+          git add -f _guard_selftest.mjs
+          if node tools/guard/scan.mjs --strict >/dev/null 2>&1; then
+            echo "::error::guard 没有拦住植入的假 secret —— 规则失效"; exit 1
+          fi
+          git rm -q --cached _guard_selftest.mjs && rm -f _guard_selftest.mjs
+          echo "guard self-test ok"
+
+      # 备份文件与构建产物不许入库（*.bak-* 是同步过来时就地备份的历史习惯）
+      - name: no backup / build artifacts tracked
+        run: |
+          bad="$(git ls-files | grep -E '(\.bak|\.bak-|\.orig$|\.rej$)' || true)"
+          if [ -n "$bad" ]; then echo "::error::备份文件被跟踪了："; echo "$bad"; exit 1; fi
+          bad="$(git ls-files | grep -E '^(dashboard/dashboard\.html|dashboard/data/)' || true)"
+          if [ -n "$bad" ]; then echo "::error::数据/产物被跟踪了："; echo "$bad"; exit 1; fi
+          echo "artifacts guard ok"
+
+  # ── Node 侧：看板单测（与 dashboard/package.json 的 engines ">=20" 对应）──
+  test-node:
+    needs: guard
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22']
+    defaults:
+      run:
+        working-directory: dashboard
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      # ⛔ 刻意不跑 npm ci / npm install：
+      #   看板源码零第三方 import（echarts 是 vendor 下的内联产物，build 时才读），
+      #   dashboard/ 下也没有 lockfile，加 npm ci 会直接失败。
+      #
+      # test:parity 依赖 _recon/struct/ref-post 的**参考快照**（基线 HTML），
+      # 那份快照属于本机 _recon、按 .gitignore 不入库 ⇒ 干净检出跑不了。
+      # 所以：有快照就跑全套 npm test；没有就跑 6 个无外部依赖的单测，
+      # 并把「跳过」显式说出来（不假装通过）。
+      - name: npm test
+        run: |
+          if [ -f _recon/struct/ref-post/src/template/dashboard.html ]; then
+            echo "发现参考快照，跑全套"; npm test
+          else
+            echo "::notice::未发现 _recon/struct/ref-post 参考快照，跳过 test:parity"
+            npm run test:window
+            npm run test:assemble
+            npm run test:runner
+            npm run test:model
+            npm run test:atomic
+            npm run test:mini
+          fi
+
+      # 抓「改了 src/ 却忘了提交」以及测试偷偷写盘
+      - name: tree must be clean after the tests
+        working-directory: .
+        run: test -z "$(git status --porcelain)"
+
+  # ── Python 侧：广播脚本语法检查（不装依赖、不联网）──
+  test-python:
+    needs: guard
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      # 只做语法/字节码编译：广播脚本依赖浏览器与内网 LLM，CI 里跑不起来也不该跑。
+      # PYTHONPYCACHEPREFIX 让 .pyc 落到临时目录，不污染工作树。
+      - name: python syntax check
+        env:
+          PYTHONPYCACHEPREFIX: /tmp/pyc
+        run: |
+          python -m compileall -q broadcast
+          echo "python syntax ok"
+
+      - name: tree must be clean after the check
+        run: test -z "$(git status --porcelain)"
+
+  # ── 发布：只在推 v* tag 时创建 GitHub Release；不发布到 npm ──────────────
+  # 与 dsh-context-guard 的差别：那边是 npm Trusted Publishing，这边是仓库里的
+  # Node 脚本 + Python 脚本，没有可发布的包，所以产物 = GitHub Release 本身。
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [test-node, test-python]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 创建 Release 必需
+    steps:
+      - uses: actions/checkout@v4
+
+      # 打包源码快照：双击可用的看板 HTML 由用户本地构建，这里只发源码。
+      - name: pack source archive
+        run: |
+          git archive --format=tar.gz --prefix="waimai-ops-kit-${GITHUB_REF_NAME}/" \
+            -o "waimai-ops-kit-${GITHUB_REF_NAME}.tar.gz" HEAD
+          sha256sum "waimai-ops-kit-${GITHUB_REF_NAME}.tar.gz" > SHA256SUMS
+          cat SHA256SUMS
+
+      - name: create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            "waimai-ops-kit-${GITHUB_REF_NAME}.tar.gz" SHA256SUMS \
+            --title "${GITHUB_REF_NAME}" \
+            --generate-notes \
+            --verify-tag

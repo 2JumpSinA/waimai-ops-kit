@@ -1,0 +1,38 @@
+{
+  "_comment": [
+    "数据链路闸门的豁免清单。",
+    "原则：只豁免『已知的、有记录的平台限制或非看板数据』，绝不豁免本地故障。",
+    "每一条 waive 都必须写 reason —— 没有原因的豁免等于关掉告警。",
+    "改了这里要同步 HANDOVER.md，否则下一个人会重新踩一遍。"
+  ],
+
+  "noGate": [
+    {
+      "stem": "income-orderlist",
+      "reason": "逐单基准，只在做口径对账时重跑；不参与看板，过期属正常。"
+    }
+  ],
+
+  "waive": [
+    {
+      "account": "yifeng",
+      "source": "taobao-stores-detail-yifeng.json",
+      "reason": "proteinQueryForArea 对品牌B恒定 FAIL_SYS_SERVICE_INNER_FAULT（nodeType=2 SUPPLIER），自 2026-09-22 起的平台侧限制，非本地故障。"
+    },
+    {
+      "account": "yifeng",
+      "source": "taobao-stats-yifeng.json",
+      "reason": "与 stores-detail 同一账号限制（整个 protein 家族对品牌B不可用），非本地故障。"
+    },
+    {
+      "account": "yifeng",
+      "step": "shangou-detail-yifeng",
+      "reason": "上面文件层豁免对应的步骤层。步骤层原先没豁免，导致每次刷新都挂一条永远消不掉的 🟡 —— 告警一多就没人看了（2026-10-21 补）。"
+    },
+    {
+      "account": "yifeng",
+      "step": "shangou-stats-yifeng",
+      "reason": "同上，protein 家族对品牌B整族不可用。"
+    }
+  ]
+}

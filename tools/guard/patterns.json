@@ -1,0 +1,98 @@
+{
+  "version": 2,
+  "_comment": [
+    "敏感内容闸门的规则表（由 tools/guard/scan.mjs 读取）。",
+    "severity=error 会拦下预检/CI；severity=warn 只打印不拦。",
+    "⚠️ 本文件会进仓库、是公开的：要拦的中文串一律写成 JSON 的 \\uXXXX 转义，",
+    "   否则守卫规则表自己就把店名/人名泄了（version 1 踩过这个坑）。",
+    "   例：\\u76ca\\u4e30 = 店名前两字；改规则时请保持转义写法。",
+    "新增规则时优先写『可判定的特征』，不要写会误伤代码的宽泛中文词。"
+  ],
+  "rules": [
+    {
+      "id": "store-real-name",
+      "severity": "error",
+      "why": "真实门店/主体名进仓库 = 客户信息泄露（审计清单：店名不可入库）",
+      "patterns": [
+        "\\u76ca\\u4e30\\u5927\\u836f\\u623f[^\\s，。、）)]{0,10}",
+        "\\u5168\\u4ebf\\u5065\\u5eb7[^\\s，。、）)]{0,10}",
+        "\\u745e\\u4eba\\u5802[^\\s，。、）)]{0,10}",
+        "\\u4f2f\\u4e50(?:\\u5927)?\\u836f[\\u623f\\u5e97][^\\s，。、）)]{0,10}"
+      ]
+    },
+    {
+      "id": "store-generic",
+      "severity": "warn",
+      "why": "泛化的『XX大药房 / XX药房 / XX药店』形态，可能是新冒出来的真实店名；只提醒不拦，避免误伤口径说明",
+      "patterns": [
+        "[\\u4e00-\\u9fa5]{2,5}(?:\\u5927\\u836f\\u623f|\\u5065\\u5eb7\\u836f\\u623f|\\u836f\\u5e97)"
+      ]
+    },
+    {
+      "id": "windows-abs-path",
+      "severity": "error",
+      "why": "本机个人绝对路径（盘符:\\... 或 盘符:/Users/...）会泄露机器与账号布局",
+      "patterns": [
+        "\\b[A-Za-z]:\\\\+(?!Program Files|Windows|ProgramData|Users\\\\Public)[A-Za-z0-9_.\\-]",
+        "\\b[A-Za-z]:/(?:Users|dsh|nodejs|Python|tools|dsh-app)/"
+      ]
+    },
+    {
+      "id": "secret-token",
+      "severity": "error",
+      "why": "常见平台令牌形态",
+      "allow": [
+        { "glob": ".github/workflows/ci.yml", "contains": "ghp_0123456789abcdefghijABCDEFGHIJ012345", "why": "守卫自检故意植入的假 token —— 必须能被拦，故不能删" }
+      ],
+      "patterns": [
+        "gh[pousr]_[A-Za-z0-9]{20,}",
+        "github_pat_[A-Za-z0-9_]{20,}",
+        "sk-[A-Za-z0-9]{20,}",
+        "AKIA[0-9A-Z]{16}",
+        "xox[baprs]-[A-Za-z0-9-]{10,}",
+        "-----BEGIN [A-Z ]*PRIVATE KEY-----"
+      ]
+    },
+    {
+      "id": "cookie-value",
+      "severity": "error",
+      "why": "会话 cookie / 签名票据字面量；HTTP 头里的 Cookie 赋值",
+      "patterns": [
+        "(?i)(?:sessdata|_m_h5_tk|_m_h5_tk_enc|mtgsig|_lxsdk_cuid|sgcookie|cna|cookie2?)=[A-Za-z0-9%._\\-]{12,}",
+        "(?i)\\bcookie\\s*[:=]\\s*[\"'][^\"']{40,}",
+        "(?i)\\b(?:token|acct[Ii]d)\\s*[:=]\\s*[\"'][A-Za-z0-9%._\\-]{24,}"
+      ]
+    },
+    {
+      "id": "wecom-bot-id",
+      "severity": "error",
+      "why": "企业微信机器人 webhook key / botId / chatId 泄露即可被外部发消息",
+      "allow": [
+        { "glob": "broadcast/config.example.json", "contains": "<你的key>", "why": "配置模板里的占位符，不是真 key" },
+        { "glob": "broadcast/config.example.json", "contains": "<", "why": "配置模板占位符（chat_id/botId 都用 <...> 形式）" }
+      ],
+      "patterns": [
+        "qyapi\\.weixin\\.qq\\.com/cgi-bin/webhook/send\\?key=",
+        "(?i)\\bkey=[A-Za-z0-9-]{30,}",
+        "(?i)\\b(?:bot_?id|chat_?id)\\b[\\s:=\"']{1,6}[A-Za-z0-9-]{12,}"
+      ]
+    },
+    {
+      "id": "personal-name",
+      "severity": "error",
+      "why": "真实人名（审计清单：人名不可入库）",
+      "patterns": [
+        "\\u963f\\u6811",
+        "\\u6062\\u6062"
+      ]
+    },
+    {
+      "id": "pii-phone",
+      "severity": "error",
+      "why": "中国大陆手机号",
+      "patterns": [
+        "(?<![0-9])1[3-9][0-9]{9}(?![0-9])"
+      ]
+    }
+  ]
+}

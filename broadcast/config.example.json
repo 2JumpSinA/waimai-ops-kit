@@ -1,0 +1,195 @@
+{
+  "_comment": "余额预警播报配置（示例）。复制一份改名 config.json 再填真实值：copy config.example.json config.json。修改后无需重启，下次运行自动生效。",
+  "_readme": [
+    "所有以 _ 开头的键都是注释（代码不会读），可以随便删改、随便加。",
+    "真实值（企业微信 userid / 门店链 ID / 品牌名 / 本机绝对路径）不要提交进仓库；",
+    "config.json 已在 .gitignore 里，别把它改成别的名字进版本库。",
+    "另一个位置也可以放配置：设置环境变量 BALANCE_ALERT_CONFIG 指向任意路径的 json。"
+  ],
+  "browser_path": "",
+  "_browser_path_help": [
+    "浏览器可执行文件。留空则自动探测 Chrome / Edge（见 core/browser.py 的候选列表）。",
+    "美团取数依赖它：余额接口有签名校验，必须在页面上下文里发请求。",
+    "示例值：C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+  ],
+  "default_threshold": 200.0,
+  "transient_retries": 2,
+  "transient_retry_delay_sec": 20,
+  "run_budget_sec": 150,
+  "mini_metrics": {
+    "enabled": true,
+    "path": "",
+    "_help": [
+      "播报末尾追加「今日经营」小节：预计收入 / 有效订单 / 取消率 / 推广消耗（看板导出的轻指标）。",
+      "enabled=false 或文件取不到 → 整段不出现，播报与关闭时逐字相同（故障隔离）。",
+      "数据由看板侧生成：node src/export-mini-metrics.mjs（看板刷新流程里跑）。",
+      "⛔ 收入口径是「预计收入」，不是成交额；口径文案由看板 caliber.mjs 提供。",
+      "path 解析顺序：本字段 → 环境变量 MINI_METRICS_PATH → 同仓库 dashboard/data/mini-metrics.json。",
+      "看板与广播不在同一仓库时，把 path 填成看板里的绝对路径。"
+    ]
+  },
+  "_transient_help": [
+    "取数遇到「临时性失败」（页面未就绪 / 连接被重置 / 超时）时重试几次、间隔多少秒。",
+    "美团要起无头浏览器，每天早上第一次取数常因页面没就绪而失败；没有重试时，",
+    "那一天就会少一个账户的播报。凭据失效、未配置这类确定性错误不重试，立即如实报出。",
+    "改成 0 即关闭重试。",
+    "run_budget_sec 是「单个账号最多能花多少秒」的上限：估算下一轮会超过就止损，",
+    "让其余账号的结果先落盘。若外层有超时（计划任务/采集器），这里必须小于外层超时，",
+    "否则被杀时一个字节都没输出、快照不更新，群里只会看到「数据陈旧」。"
+  ],
+  "always_broadcast": true,
+  "_broadcast_help": [
+    "always_broadcast=true  → 每天定时都播报一次，并列展示全部平台；",
+    "                        低于预警线的用红色 + ⚠️ 强调标注，并排在最前面。",
+    "always_broadcast=false → 静默模式，只有低于预警线或取数失败才推送。"
+  ],
+  "push_mode": "webhook,wecomcli",
+  "_push_mode_help": [
+    "通道链：按顺序尝试，第一个成功就停止（故障转移）。可写多个，逗号分隔。",
+    "webhook  = 直接 POST 到企业微信群机器人。纯 HTTP，无状态、无需授权，最稳。",
+    "wecomcli = 用 wecom-cli 以智能机器人身份私聊（需要有效授权）。",
+    "stdout   = 把文案打印出来，由调用方投递。",
+    "两条通道都配的意义：群通道静默失效（机器人被移出群 / key 被重置 / 断网到不了 qyapi）",
+    "时自动改走私聊。否则「今天没有播报」和「余额正常」在肉眼上无法区分。",
+    "想只发群就写 \"webhook\"；想只走私聊就写 \"wecomcli\"。"
+  ],
+  "wecomcli": {
+    "exe": "",
+    "chat_id": "<你的企业微信 userid，例如 woXXXXXXXXXXXX>",
+    "node": "",
+    "entry": "",
+    "_help": [
+      "exe 留空则自动查找：环境变量 WECOM_CLI_EXE → runtime\\bin\\wecom-cli.exe → 本地 npm 安装位置 → PATH。",
+      "chat_id 是私聊对象的 userid。填死它，省掉每次用 identity whoami 解析（少一处可能失败的地方）。",
+      "取 userid：wecom-cli identity whoami --json（见 wecom-cli 的文档）。",
+      "node / entry 只在 exe 找不到时的回退路径里用到；正常部署下不需要 Node。"
+    ]
+  },
+  "wecom": {
+    "webhook": "hooks:<名字>",
+    "_webhook_help": [
+      "两种写法：",
+      "  1) \"hooks:<名字>\"          ＝ 引用统一存放处 <仓库同级>/wecom-hooks/webhooks.json（轮换 key 只改那一处）；",
+      "  2) 完整地址 https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=<你的key>。",
+      "用写法 1 时，目录位置可用环境变量 WECOM_HOOKS_DIR 覆盖，缺省是仓库同级的 wecom-hooks/。",
+      "企微群机器人地址：群 → 右上角 ... → 消息推送 → 添加机器人 → 复制 Webhook 地址。",
+      "⚠️ 这个 key 等于「往该群发消息」的权限，谁拿到谁都能发，别外传、别提交到代码仓库。",
+      "为什么不用 Windows 凭据管理器：兜底脚本要在 Python 完全跑不起来时也能读到它，",
+      "所以坚持「纯文件读取」—— 只依赖文件，不依赖 Python 环境。"
+    ]
+  },
+  "schedule": {
+    "hour": 9,
+    "minute": 0,
+    "_help": "每天播报时间。注册计划任务时会读这里"
+  },
+  "safety": {
+    "pii_guard": false,
+    "_help": "输出侧长数字串拦截。余额播报不含个人信息，默认关闭以免误伤真告警"
+  },
+  "platforms": {
+    "brand_a_ele": {
+      "enabled": true,
+      "driver": "ele",
+      "cred_key": "brand_a_ele_cookie",
+      "brand": "<品牌 A>",
+      "label": "淘宝闪购",
+      "supplier_chain_id": "<供应商门店链 ID，纯数字>",
+      "threshold": null,
+      "display_name": "",
+      "unit_divisor": null,
+      "_threshold_help": "null 表示用 default_threshold"
+    },
+    "brand_a_mt": {
+      "enabled": true,
+      "driver": "meituan",
+      "cred_key": "brand_a_mt_cookie",
+      "brand": "<品牌 A>",
+      "label": "美团",
+      "threshold": null
+    },
+    "brand_b_ele": {
+      "enabled": true,
+      "driver": "ele",
+      "cred_key": "brand_b_ele_cookie",
+      "chrome_path": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+      "brand": "<品牌 B>",
+      "label": "淘宝闪购",
+      "threshold": null,
+      "supplier_chain_id": "<供应商门店链 ID，纯数字>"
+    },
+    "brand_b_mt": {
+      "enabled": true,
+      "driver": "meituan",
+      "cred_key": "brand_b_mt_cookie",
+      "chrome_path": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+      "brand": "<品牌 B>",
+      "label": "美团",
+      "threshold": null
+    }
+  },
+  "_platforms_help": [
+    "一个「平台项」= 一个账号，键名随便取（只用于标识），下面几个字段才是关键：",
+    "  driver    = 用哪个取数模块（可选 ele / meituan），决定走什么接口链路；",
+    "  cred_key  = 这个账号的凭据在凭据管理器里的键名，各账号必须不同；",
+    "  brand     = 品牌/公司名，label = 渠道名，播报文案按 brand 分组、显示为「brand·label」；",
+    "  chrome_path（可选）= 这个账号专用的浏览器，覆盖全局 browser_path；",
+    "  display_name（可选）= 播报里替代键名的显示名；",
+    "  unit_divisor（可选）= 接新驱动且接口返回「分」时填 100；现有两个驱动已归一到元，留 null。",
+    "再加一个账号 = 复制一段改掉键名、cred_key、brand，然后 set-<键名> 注入凭据即可。",
+    "键名里带连字符的写法（set-brand-a-ele）会映射到下划线键名（brand_a_ele）。",
+    "threshold 为 null 表示用 default_threshold；想单独调高/调低某个账号就写数字。",
+    "两个品牌共用同一台机器时，靠 chrome_path / profile_ports 分开登录态 —— 不同账号",
+    "共用一个 profile 会互相挤下线（美团医药是单账号会话）。"
+  ],
+  "meituan": {
+    "gateway": "https://ka.waimai.meituan.com",
+    "api_balance": "/account/r/queryAcctBalance",
+    "api_acctinfo": "/acct/info",
+    "chrome_path": "",
+    "cdp_port": 9226,
+    "home_url": "https://ka.waimai.meituan.com/new#/newhome",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    "_help": "余额接口有签名校验，需借页面内脚本发请求；改这里之前先确认接口没变"
+  },
+  "ele": {
+    "base": "https://nr.ele.me",
+    "shell_url": "https://nr.ele.me/app/eleme-nr-bfe-newretail/common-next#/pc/promotionHomePc/",
+    "home_url": "https://nr.ele.me/app/eleme-nr-bfe-newretail/common-next#/pc/promotionHomePc/",
+    "mtop_host": "https://nrshop.ele.me",
+    "mtop_appkey": "12574478",
+    "agw_host": "https://agw.ele.me/gw/h5api",
+    "agw_source": "NR_EBAI",
+    "agw_app_host": "doujin-isv-manage.faas.ele.me",
+    "_help": [
+      "走纯接口：nrshop.ele.me 的 MTOP（自算 md5 签名）拿 eleSoaToken 与 chainId，",
+      "再调 agw.ele.me 的 IGwBalanceService.findBalanceInfo 取余额。",
+      "注意 detail.balance 单位是「分」，平台模块内已除以 100。",
+      "home_url 是无头浏览器兜底时打开的页面（推广首页）。"
+    ]
+  },
+  "keyring_service": "waimai-ops-kit",
+  "_keyring_service_help": "凭据管理器的 service 名。改它 = 换一柜凭据，旧凭据读不到（需要重新注入）。",
+  "cookie_source": "profile",
+  "_cookie_source_help": [
+    "统一凭据模块：profile = 浏览器 profile 是登录态正本（CDP 端口实时读取），",
+    "Windows 凭据管理器降级为缓存（profile 不可达时回退并打 WARN，方向单向 profile→缓存）；",
+    "credman = 旧行为，只读凭据管理器，完全不碰 CDP。"
+  ],
+  "profile_ports": {
+    "brand_a_ele": 9222,
+    "brand_a_mt": 9222,
+    "brand_b_ele": 9223,
+    "brand_b_mt": 9223,
+    "_help": "平台键名 → CDP 端口。同一品牌的浏览器可以共用端口；不同品牌必须不同端口。端口号要和你实际启动的调试浏览器一致。"
+  },
+  "_env_help": [
+    "除了本文件，还有几个环境变量会影响行为（优先级：配置项 > 环境变量 > 内置默认）：",
+    "  BALANCE_ALERT_CONFIG   配置文件路径。多环境切换（测试/生产）时比改文件名方便。",
+    "  MINI_METRICS_PATH      轻指标文件路径，mini_metrics.path 留空时生效。",
+    "  WECOM_HOOKS_DIR        webhook_key.py 所在目录（push_mode 里用 hooks:<名字> 时）。",
+    "  WECOM_NODE_SEARCH_DIRS 找 node.exe 时额外搜索的目录，多个用 os.pathsep 分隔；",
+    "                         只在 wecom-cli.exe 找不到、回退到 node+JS 入口时才用到。",
+    "  WECOM_CLI_EXE          直接指定 wecom-cli 可执行文件，跳过自动查找。"
+  ]
+}

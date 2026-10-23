@@ -1,0 +1,101 @@
+# waimai-ops-kit —— 提交边界（.gitignore）
+#
+# 规则来源：
+#   1. 安全审计清单 & HANDOVER.md「同步前先做敏感词替换：真实人名 / 店名 / botId / chatId」
+#   2. 本仓库实际落盘路径（dashboard/src/lib/account.mjs 的 .secrets/*.cookie.txt、
+#      build-dashboard.mjs 的 dashboard/data 与 dashboard/dashboard.html、broadcast 的日志目录）
+#
+# 原则：宁可多忽略。确实该进仓库的例外，用 `git add -f <path>` 显式放行，
+#       并且必须同时确认内容不含真实店名 / 凭据（CI 的 guard 闸会拦）。
+
+# ── 1. 凭据与登录态：绝不允许进仓库 ────────────────────────────────
+.secrets/
+**/.secrets/
+*.cookie.txt
+*.cookies.txt
+cookies.json
+*.cookies.json
+cookie-*.json
+storage-state*.json
+*.storage-state.json
+*.profile/
+profile/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# ── 2. 数据落地与运行产物（含真实店名 / 流水，属敏感）──────────────
+dashboard/data/
+dashboard/dashboard.html
+data/
+out/
+output/
+dist/
+state/
+runs/
+snapshots/
+tmp/
+.tmp/
+*.tmp
+
+# ── 3. 日志与抓包 dump（含 cookie / 响应体）────────────────────────
+logs/
+*.log
+*.jsonl
+*.har
+*.trace
+*.mp4
+*.webm
+*.png
+*.jpg
+*.jpeg
+*.webp
+!docs/**/*.png
+_recon/
+sniff-*.json
+dump-*.json
+bodies-*.json
+
+# ── 4. 依赖与缓存 ──────────────────────────────────────────────────
+node_modules/
+**/node_modules/
+.pnpm-store/
+npm-debug.log*
+.npm/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+venv/
+.venv/
+*.egg-info/
+
+# ── 5. 编辑器 / 备份 / 系统垃圾 ────────────────────────────────────
+# 仓库快照是从带时间戳的备份目录同步来的，*.bak-* 是就地备份，不入库
+*.bak
+*.bak-*
+*.bak.*
+*.orig
+*.rej
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.code-workspace
+
+# ── 6. 本机的 DS H 会话痕迹（含对话/路径，不属仓库内容）────────────
+.dsh/
+.dsh-*
+CLAUDE.md
+AGENTS.md
+HANDOVER.md

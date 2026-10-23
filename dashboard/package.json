@@ -1,0 +1,47 @@
+{
+  "name": "waimai-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "外卖数据可视化看板：美团外卖商家版 + 淘宝闪购零售商家端 → 单 HTML + JSON",
+  "scripts": {
+    "fetch:meituan": "node src/fetch-meituan.mjs",
+    "fetch:meituan:income": "node src/fetch-meituan-income.mjs",
+    "fetch:meituan:today": "node src/fetch-meituan-today.mjs",
+    "fetch:meituan:exposure": "node src/fetch-meituan-exposure.mjs",
+    "fetch:taobao": "node src/fetch-taobao.mjs",
+    "fetch:taobao:detail": "node src/fetch-taobao-detail.mjs",
+    "fetch": "node src/fetch-meituan.mjs --account=quanyi && node src/fetch-taobao.mjs --account=quanyi",
+    "fetch:yifeng": "node src/fetch-meituan.mjs --account=yifeng && node src/fetch-taobao.mjs --account=yifeng",
+    "build": "node src/build-dashboard.mjs",
+    "build:mini": "node src/export-mini-metrics.mjs",
+    "run": "npm run fetch && npm run build && npm run build:mini",
+    "run:yifeng": "npm run fetch:yifeng && npm run build && npm run build:mini",
+    "sessions": "node src/check-sessions.mjs",
+    "inspect": "node src/inspect-dashboard-vm.mjs",
+    "freshness": "node src/freshness.mjs",
+    "gate": "node src/check-gate.mjs",
+    "gate:json": "node src/check-gate.mjs --json",
+    "serve": "node src/serve-dashboard.mjs",
+    "compare:income": "node src/compare-income-files.mjs",
+    "verify": "node src/verify-dashboard.mjs --static",
+    "verify:all": "node src/verify-all.mjs",
+    "verify:all:dynamic": "node src/verify-all.mjs --dynamic",
+    "test": "node src/test-mt-window.mjs && node src/test-mt-income-assemble.mjs && node src/test-refresh-runner.mjs && node src/test-dashboard-model.mjs && node src/test-dashboard-parity.mjs --templates && node src/test-atomic-runstate.mjs && node src/test-mini-metrics.mjs",
+    "test:window": "node src/test-mt-window.mjs",
+    "test:assemble": "node src/test-mt-income-assemble.mjs",
+    "test:runner": "node src/test-refresh-runner.mjs",
+    "test:model": "node src/test-dashboard-model.mjs",
+    "test:parity": "node src/test-dashboard-parity.mjs --templates",
+    "test:parity:product": "node src/test-dashboard-parity.mjs",
+    "test:atomic": "node src/test-atomic-runstate.mjs",
+    "test:mini": "node src/test-mini-metrics.mjs",
+    "fixture:parity": "node src/test-fixtures/make-parity-fixture.mjs"
+  },
+  "dependencies": {
+    "echarts": "^6.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

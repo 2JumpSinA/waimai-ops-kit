@@ -1,0 +1,44 @@
+# broadcast/ 第三方依赖清单
+# ---------------------------------------------------------------------------
+# 生成方式：对 broadcast/**/*.py（排除 *.bak-*）全量扫 import，逐条标注出处行号。
+# 安装：    python -m pip install -r requirements.txt
+# 运行环境：Python >= 3.9（所有模块都带 `from __future__ import annotations`，
+#           3.9 可用；推荐 3.10+）
+# 结论：本目录 3 个第三方包，其中 2 个必需、1 个可选。
+# ---------------------------------------------------------------------------
+
+# ── 必需（不装 = 取不到余额）────────────────────────────────────────────
+requests>=2.31,<3
+    # 干什么：所有 HTTP 请求。淘宝闪购的 MTOP 签名调用、饿了么 AGW 余额接口、
+    #         以及从浏览器 profile 读登录态都走它。
+    # 出处：  platforms/ele.py:44、core/profile_cookie.py:35（模块级 import，无 try 兜底）
+
+websocket-client>=1.6,<2
+    # 干什么：CDP（Chrome DevTools Protocol）WebSocket 客户端 —— 没有它就驱动不了
+    #         浏览器，美团余额只能靠页面内签名取数，整条链路不可用。
+    # 注意：  包名是 websocket-client，代码里 import 的名字是 websocket（这是该包的
+    #         历史命名，不是笔误）。
+    # 出处：  core/browser.py:34（模块级 import）、core/profile_cookie.py:71
+
+# ── 可选（不装 = 自动降级，不崩）────────────────────────────────────────
+keyring>=24
+    # 干什么：把 Cookie 凭据存进操作系统凭据管理器（Windows Credential Manager）。
+    # 不装会怎样： core/store.py:46-51 是 try/except ImportError —— keyring 缺失时
+    #             _HAS_KEYRING=False，凭据改存 creds/<cred_key>.txt 明文文件，
+    #             并在日志里打一条 WARN。功能可用，安全性下降。
+    # 什么时候必装： 用 plan 任务/无人值守跑，且希望凭据不落明文盘时。
+    # 出处：  core/store.py:47
+
+# ── 明确不使用（候选清单里被否掉的，别顺手加回来）─────────────────────
+# pycryptodome / cryptography
+#   本仓库没有任何 AES/RSA 需求。美团/闪购的签名都是普通 md5，用标准库 hashlib
+#   就能算完（platforms/ele.py:208 `hashlib.md5(...)`）。加进来纯属增加供应链面。
+# openpyxl / numpy
+#   零 import。台账 xlsx 是看板侧用纯 JS 自己解析的
+#   （dashboard/src/lib/xlsx.mjs），广播侧只读看板导出的 JSON
+#   （core/metrics.py 读 data/mini-metrics.json），不碰 xlsx、不做数值计算。
+#
+# 以上结论对应的检查方式（可复现）：
+#   grep -rnE "^\s*(import|from)\s+" broadcast --include=*.py
+#   去掉标准库后，剩下的第三方模块只有 requests / websocket / keyring 三个。
+#   另有一个 `webhook_key` 是本地文件（WECOM_HOOKS_DIR 下的 .py），不是 pip 包。
