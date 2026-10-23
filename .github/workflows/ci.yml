@@ -84,25 +84,42 @@ jobs:
 
       # ⛔ 刻意不跑 npm ci / npm install：
       #   看板源码零第三方 import（echarts 是 vendor 下的内联产物，build 时才读），
-      #   dashboard/ 下也没有 lockfile，加 npm ci 会直接失败。
+      #   仓库里不带 lockfile，加 npm ci 会直接失败。
       #
-      # test:parity 依赖 _recon/struct/ref-post 的**参考快照**（基线 HTML），
-      # 那份快照属于本机 _recon、按 .gitignore 不入库 ⇒ 干净检出跑不了。
-      # 所以：有快照就跑全套 npm test；没有就跑 6 个无外部依赖的单测，
-      # 并把「跳过」显式说出来（不假装通过）。
-      - name: npm test
+      # 哪些测试能在干净检出里跑，取决于两个「本机才有的东西」在不在：
+      #   · _recon/struct/ref-post  → test:parity 的参考快照（不入库）
+      #   · _recon/                 → test-atomic-runstate 的临时工作目录（不入库）
+      # 我们有意识地**不假装通过**：跑不了的那几项显式打 notice 说明原因。
+      - name: npm test (with graceful degradation)
         run: |
+          fail=0
+          run() {
+            name="$1"; shift
+            echo "─── $name ───"
+            if ! "$@"; then echo "::error::$name 失败"; fail=1; fi
+          }
+
+          # 无外部依赖的五个，必须过
+          run "单测·窗口"     npm run test:window
+          run "单测·装配"     npm run test:assemble
+          run "单测·刷新器"   npm run test:runner
+          run "单测·模型"     npm run test:model
+          run "单测·播报指标" npm run test:mini
+
+          # 依赖本机快照的两项：有就跑，没有就明说跳过
           if [ -f _recon/struct/ref-post/src/template/dashboard.html ]; then
-            echo "发现参考快照，跑全套"; npm test
+            run "parity·模板" npm run test:parity
           else
-            echo "::notice::未发现 _recon/struct/ref-post 参考快照，跳过 test:parity"
-            npm run test:window
-            npm run test:assemble
-            npm run test:runner
-            npm run test:model
-            npm run test:atomic
-            npm run test:mini
+            echo "::notice::缺少 _recon/struct/ref-post 参考快照 → 跳过 test:parity（该项需要本机逆向产物）"
           fi
+
+          if [ -d _recon ]; then
+            run "单测·原子状态" npm run test:atomic
+          else
+            echo "::notice::缺少 _recon 目录 → 跳过 test-atomic-runstate（该项需要临时工作目录）"
+          fi
+
+          exit $fail
 
       # 抓「改了 src/ 却忘了提交」以及测试偷偷写盘
       - name: tree must be clean after the tests
