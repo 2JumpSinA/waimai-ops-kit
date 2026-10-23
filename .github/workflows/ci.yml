@@ -147,8 +147,9 @@ jobs:
 
   # ── Windows 专属：test:runner（验证「文件 stdio 启动 powershell」这条本机生产路径）──
   # 为什么要单独一个 job：这套实现的核心动机是「本机沙箱禁命名管道，所以不能用
-  # stdio:'pipe' 捕获输出，只能让子进程把日志写文件再尾巴读取」。Linux runner 上
-  # 没有 powershell.exe，替身收不到参数 ⇒ 该测试只能在 Windows 上验证真伪。
+  # stdio 管道捕获输出，只能让子进程把日志写文件再尾巴读取」。Linux runner 上
+  # 没有 powershell.exe，替身收不到参数、exitCode 恒为 null ⇒ 该测试只能在
+  # Windows 上验证真伪。
   # 代价：CI 时间约翻倍（Windows runner 单价更高），换来这条最容易静默坏掉的
   # 进程管理路径有真机覆盖。
   test-node-windows:
@@ -157,7 +158,7 @@ jobs:
     defaults:
       run:
         working-directory: dashboard
-      shell: pwsh
+        shell: pwsh
     steps:
       - uses: actions/checkout@v4
 
