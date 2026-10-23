@@ -145,6 +145,39 @@ jobs:
         working-directory: .
         run: test -z "$(git status --porcelain)"
 
+  # ── Windows 专属：test:runner（验证「文件 stdio 启动 powershell」这条本机生产路径）──
+  # 为什么要单独一个 job：这套实现的核心动机是「本机沙箱禁命名管道，所以不能用
+  # stdio:'pipe' 捕获输出，只能让子进程把日志写文件再尾巴读取」。Linux runner 上
+  # 没有 powershell.exe，替身收不到参数 ⇒ 该测试只能在 Windows 上验证真伪。
+  # 代价：CI 时间约翻倍（Windows runner 单价更高），换来这条最容易静默坏掉的
+  # 进程管理路径有真机覆盖。
+  test-node-windows:
+    needs: guard
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: dashboard
+      shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: npm run test:runner (needs powershell.exe)
+        run: npm run test:runner
+
+      # runner 的测试会写 _recon/refresh-web.log —— 它被 .gitignore 忽略，
+      # 但这里仍断言「没有改动被跟踪的文件」，防止测试偷偷改源码。
+      - name: tree must be clean after the tests
+        working-directory: .
+        shell: pwsh
+        run: |
+          $dirty = git status --porcelain
+          if ($dirty) { Write-Error "测试产生了未预期的改动:`n$dirty"; exit 1 }
+          Write-Host "tree clean"
+
   # ── Python 侧：广播脚本语法检查（不装依赖、不联网）──
   test-python:
     needs: guard
@@ -177,7 +210,7 @@ jobs:
   # Node 脚本 + Python 脚本，没有可发布的包，所以产物 = GitHub Release 本身。
   release:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [test-node, test-python]
+    needs: [test-node, test-node-windows, test-python]
     runs-on: ubuntu-latest
     permissions:
       contents: write # 创建 Release 必需
