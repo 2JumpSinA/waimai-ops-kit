@@ -109,12 +109,21 @@ jobs:
             fi
           }
 
-          # 无外部依赖的五个，必须过
+          # 无外部依赖的四个，必须过
           run "单测·窗口"     npm run test:window
           run "单测·装配"     npm run test:assemble
-          run "单测·刷新器"   npm run test:runner
           run "单测·模型"     npm run test:model
           run "单测·播报指标" npm run test:mini
+
+          # ⚠️ test:runner 验证的是「用文件 stdio 启动 powershell.exe」这条 Windows 专属路径
+          #    （本机沙箱禁命名管道，所以生产实现走文件 stdio）。Linux runner 上没有
+          #    powershell.exe，替身收不到参数、exitCode 恒为 null ⇒ 必然失败。
+          #    这不是代码 bug，是平台依赖，所以**显式跳过并说明**，不假装通过。
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            run "单测·刷新器" npm run test:runner
+          else
+            echo "::notice::test:runner 需要 powershell.exe（Windows 专属）→ 在 $RUNNER_OS 上跳过"
+          fi
 
           # 依赖本机快照的两项：有就跑，没有就明说跳过（不假装通过）
           if [ -f _recon/struct/ref-post/src/template/dashboard.html ]; then
