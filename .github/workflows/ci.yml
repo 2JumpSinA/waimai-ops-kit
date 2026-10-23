@@ -92,11 +92,21 @@ jobs:
       # 我们有意识地**不假装通过**：跑不了的那几项显式打 notice 说明原因。
       - name: npm test (with graceful degradation)
         run: |
-          fail=0
+          # ⚠️ 注意 GitHub Actions 默认是 `bash -e`（遇错即停），
+          # 而我们要「全跑完再汇总」，所以逐项显式收集失败，最后统一 exit。
+          # 不用 `if ! cmd` 的写法：那会把命令放进条件上下文，某些 shell 下
+          # 退出码语义容易出错（曾导致「测试全 PASS 却报 exit 1」）。
+          FAILED=""
+
           run() {
             name="$1"; shift
             echo "─── $name ───"
-            if ! "$@"; then echo "::error::$name 失败"; fail=1; fi
+            if "$@"; then
+              echo "PASS $name"
+            else
+              echo "::error::$name 失败"
+              FAILED="$FAILED $name"
+            fi
           }
 
           # 无外部依赖的五个，必须过
@@ -106,20 +116,20 @@ jobs:
           run "单测·模型"     npm run test:model
           run "单测·播报指标" npm run test:mini
 
-          # 依赖本机快照的两项：有就跑，没有就明说跳过
+          # 依赖本机快照的两项：有就跑，没有就明说跳过（不假装通过）
           if [ -f _recon/struct/ref-post/src/template/dashboard.html ]; then
             run "parity·模板" npm run test:parity
           else
-            echo "::notice::缺少 _recon/struct/ref-post 参考快照 → 跳过 test:parity（该项需要本机逆向产物）"
+            echo "::notice::缺少 _recon/struct/ref-post 参考快照 → 跳过 test:parity（需本机逆向产物）"
           fi
 
-          if [ -d _recon ]; then
-            run "单测·原子状态" npm run test:atomic
-          else
-            echo "::notice::缺少 _recon 目录 → 跳过 test-atomic-runstate（该项需要临时工作目录）"
-          fi
+          run "单测·原子状态" npm run test:atomic
 
-          exit $fail
+          if [ -n "$FAILED" ]; then
+            echo "::error::以下测试失败：$FAILED"
+            exit 1
+          fi
+          echo "✅ 全部测试通过"
 
       # 抓「改了 src/ 却忘了提交」以及测试偷偷写盘
       - name: tree must be clean after the tests

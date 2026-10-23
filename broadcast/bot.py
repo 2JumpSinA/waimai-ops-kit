@@ -643,7 +643,10 @@ def cmd_status(cfg: dict, args) -> int:
     print(f"Python 运行时  : {sys.executable}"
           + ("（随部署包打包，不依赖外部安装）" if bundled_py.exists() else "（外部安装）"))
     bundled_cli = ROOT / "runtime" / "bin" / "wecom-cli.exe"
-    print(f"推送程序       : {'runtime\\bin\\wecom-cli.exe（随包打包）' if bundled_cli.exists() else '需外部安装'}")
+    # ⚠️ f-string 里不能出现反斜杠（Python 3.12 前是 SyntaxError）——
+    # 这里用拼接而不是在 {} 内写 'runtime\\bin\\...'，否则 3.10/3.11 直接编译不过。
+    _cli_desc = "runtime/bin/wecom-cli.exe（随包打包）" if bundled_cli.exists() else "需外部安装"
+    print("推送程序       : " + _cli_desc)
     print("-" * 46)
     for key, pcfg in cfg["platforms"].items():
         th = threshold_of(key, cfg)
